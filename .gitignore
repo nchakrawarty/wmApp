@@ -1,0 +1,6 @@
+node_modules
+node_modules
+dist
+# Ignore .pack files in the .angular/cache directory
+.angular
+.vscode
