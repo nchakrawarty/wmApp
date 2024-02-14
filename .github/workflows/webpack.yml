@@ -29,5 +29,5 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@4.1.5
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages  # Adjust this if you want to deploy to a different branch
+        branch: main  # Adjust this if you want to deploy to a different branch
         folder: www       # Adjust this if your build output directory is different
