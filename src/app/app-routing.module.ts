@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   },
   {
+    path: 'trips',
+    loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule)
+  },
+  {
     path: 'qrscan',
     loadChildren: () => import('./qrscan/qrscan.module').then( m => m.QRScanPageModule)
   },
@@ -22,12 +26,11 @@ const routes: Routes = [
   {
     path: 'enter-waste',
     loadChildren: () => import('./enter-waste/enter-waste.module').then( m => m.EnterWastePageModule)
-  },  {
+  },
+  {
     path: 'add-payment',
     loadChildren: () => import('./add-payment/add-payment.module').then( m => m.AddPaymentPageModule)
   }
-
-
 
 ];
 
