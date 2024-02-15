@@ -4,3 +4,5 @@ dist
 # Ignore .pack files in the .angular/cache directory
 .angular
 .vscode
+www/*
+android/*
