@@ -12,22 +12,27 @@ const { Camera } = Plugins;
   styleUrls: ['./add-image.page.scss'],
 })
 export class AddImagePage {
+  imageList: string[] = [];
 
   constructor() {}
 
   async takePhoto() {
     try {
-      const image = await Camera['getPhoto']({
+      const image = await Camera['getPhoto'] ({
         quality: 100,
         allowEditing: false,
         resultType: CameraResultType.Uri,
         source: CameraSource.Camera,
       });
-
-      // Handle the captured image here, for example, you can display it or save it.
-      console.log('Photo captured:', image);
+      this.imageList.push(image.webPath);
     } catch (error) {
       console.error('Error taking photo:', error);
     }
   }
-}
+
+  saveImages() {
+    
+    console.log('Images to be saved:', this.imageList);
+    
+  }
+} 

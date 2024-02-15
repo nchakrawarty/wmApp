@@ -1,34 +1,42 @@
 <ion-header>
   <ion-toolbar color="primary">
       <ion-title></ion-title>
-      <!-- Menu Icon -->
-      <ion-buttons slot="start">
-          <ion-menu-button  ></ion-menu-button>
-      </ion-buttons>
-  <!-- Back icon -->
-       <ion-buttons slot="start"> 
-       <ion-back-button defaultHref="home"></ion-back-button>
+      
+      
+      <ion-buttons slot="start"> 
+          <ion-back-button defaultHref="home"></ion-back-button>
       </ion-buttons> 
   </ion-toolbar>
+</ion-header>
 
-<p> Add Images</p></ion-header>
-
-<ion-content>
+<ion-content class="ion-text-left">
+  <p>Add Images</p>
+  
   <ion-grid>
-    <ion-row>
-      <ion-col size="3">
+    <ion-row justify-content-center>
+      <ion-col size="4">
         <ion-button expand="block" (click)="takePhoto()">+</ion-button>
       </ion-col>
-      <ion-col size="3">
+      <ion-col size="4">
         <ion-button expand="block" (click)="takePhoto()">+</ion-button>
       </ion-col>
- <br>
-    <ion-col size="3">
-      <ion-button expand="block" (click)="takePhoto()">+</ion-button>
-    </ion-col>
-    <ion-col size="3">
-      <ion-button expand="block" (click)="takePhoto()">+</ion-button>
-    </ion-col>
-  </ion-row>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="takePhoto()">+</ion-button>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row content-center>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="takePhoto()">+</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="takePhoto()">+</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" (click)="takePhoto()">+</ion-button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
+
+  <ion-button expand="block" (click)="saveImages()">Save</ion-button>
 </ion-content>
