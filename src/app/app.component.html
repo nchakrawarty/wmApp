@@ -25,5 +25,28 @@
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
+
+    <ion-tabs contentId="main-content">
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="folder/home">
+          <ion-icon name="home"></ion-icon>
+          Home
+        </ion-tab-button>
+        <ion-tab-button tab="folder/customer">
+          <ion-icon name="person"></ion-icon>
+          Customer
+        </ion-tab-button>
+        <ion-tab-button tab="trips">
+          <ion-icon name="car"></ion-icon>
+          Trips
+        </ion-tab-button>
+        <ion-tab-button tab="folder/sell">
+          <ion-icon name="logo-usd"></ion-icon>
+          Sell
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
   </ion-split-pane>
+
+  
 </ion-app>
