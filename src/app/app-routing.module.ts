@@ -24,6 +24,26 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+    {
+    path: 'trips',
+    loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule)
+  },
+  {
+    path: 'qrscan',
+    loadChildren: () => import('./qrscan/qrscan.module').then( m => m.QRScanPageModule)
+  },
+  {
+    path: 'qrentry',
+    loadChildren: () => import('./qrentry/qrentry.module').then( m => m.QREntryPageModule)
+  },
+  {
+    path: 'enter-waste',
+    loadChildren: () => import('./enter-waste/enter-waste.module').then( m => m.EnterWastePageModule)
+  },
+  {
+    path: 'add-payment',
+    loadChildren: () => import('./add-payment/add-payment.module').then( m => m.AddPaymentPageModule)
   }
 
 ];
@@ -35,3 +55,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
