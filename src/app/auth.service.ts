@@ -1,23 +1,37 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = 'http://localhost:3000/api/accounts';
+  constructor(private http: HttpClient) {}
 
-  constructor() {}
-
-  authenticate(): boolean {
-    // Implement authentication logic
-    // assume authentication is successful if a user is logged in
-    // replace this with actual authentication logic
-    return this.isLoggedIn(); // Assuming isLoggedIn method is implemented to check if user is logged in
+  // Method for handling login
+  login(username: string, password: string): Observable<boolean> {
+    // Assuming you have an API endpoint for user authentication
+    return this.http.post<any>(`${this.apiUrl}`, { username, password }).pipe(
+      catchError((error: any) => {
+        // Handle error (e.g., log, display error message)
+        console.error('Login error:', error);
+        // Return false to indicate login failure
+        return of(false);
+      })
+    );
   }
 
-  private isLoggedIn(): boolean {
-    // Implement logic to check if the user is logged in
-    // For example, check if there is a token in local storage
-    // Replace this with actual implementation
-    return localStorage.getItem('token') !== null;
+  // Method to check if user is logged in
+  isAuthenticated(): boolean {
+    // Check if user is logged in based on session or token
+    return localStorage.getItem('isLoggedIn') === 'true';
+  }
+
+  // Method to log out user
+  logout(): void {
+    // Clear user session or authentication token
+    localStorage.removeItem('isLoggedIn');
   }
 }

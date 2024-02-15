@@ -1,0 +1,49 @@
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc; /* Keep this border for the container */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .welcome-text {
+    color: #8B4513;
+  }
+  
+  .signup-text {
+    margin-top: 10px;
+    color: #333;
+  }
+  
+  /* Additional styles for ion-item and ion-button */
+  ion-item {
+    --background: lightgrey;
+    --padding-start: 8px;
+    --padding-end: 8px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  
+  ion-button {
+    --background: #316974; /* Change the color to a greenish shade */
+    color: #fff;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    --border-radius: 3px;
+    width: 100%;
+  }
+  
+  ion-button:hover {
+    --background: #27ae60; /* Darker shade for hover effect */
+  }
+  

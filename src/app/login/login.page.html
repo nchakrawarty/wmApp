@@ -1,11 +1,15 @@
-<form (submit)="login()">
-  <ion-item>
-    <ion-label position="floating">Username</ion-label>
-    <ion-input type="text" [(ngModel)]="username"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Password</ion-label>
-    <ion-input type="password" [(ngModel)]="password"></ion-input>
-  </ion-item>
-  <ion-button expand="block" type="submit">Login</ion-button>
-</form>
+<div class="center-container">
+  <div class="container">
+    <h2 class="welcome-text">Welcome</h2>
+    <form #loginForm="ngForm" (submit)="onSubmit(loginForm)">
+      <ion-item>
+        <ion-input type="email" name="email" required #emailInput label="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" name="password" required #passwordInput label="Password"></ion-input>
+      </ion-item>     
+      <ion-button expand="block" type="submit">Log In</ion-button>
+    </form>
+    <p class="signup-text">Don't have an account? <a routerLink="/register">Sign up</a></p>
+  </div>
+</div>
