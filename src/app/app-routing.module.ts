@@ -44,8 +44,15 @@ const routes: Routes = [
   {
     path: 'add-payment',
     loadChildren: () => import('./add-payment/add-payment.module').then( m => m.AddPaymentPageModule)
+  },
+  {
+    path: 'add-image',
+    loadChildren: () => import('./add-image/add-image.module').then( m => m.AddImagePageModule)
+  },
+  {
+    path: 'recycle-add',
+    loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule)
   }
-
 ];
 
 @NgModule({
