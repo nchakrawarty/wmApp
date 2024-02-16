@@ -4,15 +4,17 @@ import { HomePage } from './home/home.page';
 import { AuthGuard } from './auth.guard';
 import { LoginPage } from './login/login.page';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
   { path: 'login', component: LoginPage },
   { path: 'home', component: HomePage, canActivate: [AuthGuard] },
-  // {
-  //   path: '',
-  //   redirectTo: 'folder/Inbox',
-  //   pathMatch: 'full'
-  // },
+
+  {
+     path: '',
+     redirectTo: 'folder/Inbox',
+     pathMatch: 'full'
+  },
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)

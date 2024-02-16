@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-qrentry',
@@ -7,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QREntryPage implements OnInit {
 
-  constructor() { }
+
+
+  constructor(private navCtrl: NavController) {}
+  
+  navigateBack() {
+    this.navCtrl.navigateBack('/qrscan'); 
+  }
 
   ngOnInit() {
   }

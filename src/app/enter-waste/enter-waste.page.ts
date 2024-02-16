@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-enter-waste',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnterWastePage implements OnInit {
 
-  constructor() { }
+  
+  constructor(private navCtrl: NavController) {}
+  
+  navigateBacktoqrentry() {
+    this.navCtrl.navigateBack('/qrentry'); 
+  }
+
 
   ngOnInit() {
   }

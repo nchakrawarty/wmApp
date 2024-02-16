@@ -1,21 +1,33 @@
 <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="navigateBack()">
+      <ion-icon style="color:#fff" name="chevron-back-outline"></ion-icon>
+    </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
+  <ion-header collapse="condense">
+  </ion-header>
   <div class="qr-rrK">
-    <div class="auto-group-uhkd-d6P">
-      <img class="expandleft-NJs" src="./assets/expandleft.png" routerLink="qrscan"/>
+    <div class="group3093">
+      <p class="t1-name">Dayanand</p>
+      <p class="t1-contact">Contact: 8861166237</p>
     </div>
-    <div class="auto-group-7sxh-71Z">
-      <div class="group-3093-S3q">
-        <div class="dayanand-xns">Dayanand</div>
-        <div class="contact-8861166237-UWK">Contact : 8861166237</div>
-      </div>
-      <div class="group-3091-zUf" routerLink="enter-waste">Enter Waste</div>
-      <div class="line-4-FvP"></div>
-      <div class="group-3089-Cqd" routerLink="add-payment">Enter Payment</div>
+
+    <div class="group3091" style="display: flex;">
+      <ion-button color="#A56946"  class="rectangle35" routerLink="enter-waste" >
+        <ion-label>Enter Waste</ion-label>
+      </ion-button>
+    </div>
+
+    <div class="line4"></div>
+
+    <div class="group3089" style="display: flex;">
+      <ion-button  color="#A56946"  class="rectangle34" routerLink="add-payment">
+        <ion-label>Enter Payment</ion-label>
+      </ion-button>
     </div>
   </div>
 </ion-content>
-
-

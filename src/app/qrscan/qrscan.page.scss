@@ -1,1 +1,24 @@
-
+ion-header {
+    /* Maintain desired dimensions */
+    width: 100%;
+    height: 48px;
+    background: #A56946;
+    ;
+  
+    .ion-icon {
+      width: 24px;
+      height: 24px;
+      top: 12px;
+      left: 8px;
+      color: #ffffff;
+      padding: 6px 0;
+      display: flex;
+    }
+  }
+  ion-content{
+    background-color: #ffffff;
+    width: 100%;
+    height:-80px
+  }
+  
+  

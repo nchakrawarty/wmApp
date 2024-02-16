@@ -1,85 +1,50 @@
-import { AfterViewInit,Component,OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AlertController, IonRow } from '@ionic/angular';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon } from '@ionic/angular/standalone';
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
-import { IonicModule } from '@ionic/angular';
-/*import{Plugins} from '@capacitor/core';
-const { BarcodeScanner }=Plugins;*/
+import { Component, OnInit } from '@angular/core';
+import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { AlertController } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonContent, IonFab, IonTitle, IonIcon, IonButton, IonList, IonItem, IonLabel, IonInput, IonFabButton } from "@ionic/angular/standalone";
 
 @Component({
-  selector: 'app-qrscan',
-  templateUrl: './qrscan.page.html',
-  styleUrls: ['./qrscan.page.scss'],
+  selector: 'app-home',
+  templateUrl: 'qrscan.page.html',
+  styleUrls: ['qrscan.page.scss'],
   standalone: true,
-  imports: [IonicModule,CommonModule,IonIcon, IonButton, IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonFabButton, IonInput, IonLabel, IonItem, IonList, IonButton, IonIcon, IonTitle, IonFab, IonContent, IonToolbar, IonHeader, IonButton, IonIcon, IonHeader, IonToolbar, IonTitle, IonContent],
 })
-export class QRScanPage implements AfterViewInit,OnDestroy{
+export class QRScanPage implements OnInit {
 
-  result:any=null;
-  scanActive = false;
+  isSupported = false;
+  barcodes: Barcode[] = [];
+
 
   constructor(private alertController: AlertController) {}
 
-  ngAfterViewInit() {
-    BarcodeScanner.prepare();
+  ngOnInit() {
+    BarcodeScanner.isSupported().then((result) => {
+      this.isSupported = result.supported;
+    });
   }
 
-  ngOnDestroy() {
-    BarcodeScanner.stopScan();
-  }
-
-  async startScanner(){
-    const allowed = await this.checkPermission();
-    if(allowed){
-      this.scanActive = true;
-      const result =await BarcodeScanner.startScan();
-      BarcodeScanner.hideBackground();
-      if (result.hasContent){
-        this.result=result.content;
-        this.scanActive = false;
-      }
-      
+  async scan(): Promise<void> {
+    const granted = await this.requestPermissions();
+    if (!granted) {
+      this.presentAlert();
+      return;
     }
-    
-    
+    const { barcodes } = await BarcodeScanner.scan();
+    this.barcodes.push(...barcodes);
   }
 
- async checkPermission(){
-  return new Promise(async(resolve,reject)=>{
-    const status = await BarcodeScanner.checkPermission({force:true});
-    if (status.granted) {
-      resolve(true);
-    } else if (status.denied) {
-      const alert= await this.alertController.create({
-        header:'No permission',
-        message:'Please allow camera access in your settings',
-        buttons:[{
-          text:'No',
-          role:'cancel'
-        },
-        {
-          text:'Open Settings',
-          handler: ()=> {
-            resolve(false);
-            BarcodeScanner.openAppSettings();
-          }
-        }]
-      });
+  async requestPermissions(): Promise<boolean> {
+    const { camera } = await BarcodeScanner.requestPermissions();
+    return camera === 'granted' || camera === 'limited';
+  }
 
-      await alert.present();
-
-    } else {
-      resolve(false);
-    }
-  });
-  
- } 
-
- stopScanner(){
-  BarcodeScanner.stopScan();
-  this.scanActive= false;
-
- }
-    
+  async presentAlert(): Promise<void> {
+    const alert = await this.alertController.create({
+      header: 'Permission denied',
+      message: 'Please grant camera permission to use the barcode scanner.',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
 }
