@@ -14,8 +14,13 @@ export class LoginPage {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    
-      // Directly navigate to the home page without any authentication logic
+     // Call the authentication method from AuthService
+     if (this.authService.authenticate(this.username, this.password)) {
+      // If authentication is successful, navigate to the home page
       this.router.navigateByUrl('/home');
+    } else {
+      // If authentication fails, you can handle it here (e.g., show an error message)
+      console.log('Authentication failed');
     }
+  }
 }
