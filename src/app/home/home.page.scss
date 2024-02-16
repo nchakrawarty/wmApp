@@ -1,0 +1,41 @@
+ion-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+  }
+  
+  ion-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  ion-label {
+    font-weight: bold;
+  }
+  
+  .button-row {
+    display: flex;
+    flex-direction: row; /* Ensure buttons are in a row */
+    justify-content: center; /* Center buttons horizontally */
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  ion-button {
+    margin: 0 3px; /* Add some space between buttons */
+    --background: #a5694680; /* Inactive button color */
+    --color: #ffffff; /* Text color for buttons */
+    width: 100%;
+  }
+
+  ion-button.active {
+    --background: #a56946; /* Active button color */
+  }
+  
+  .qr-scan-tab {
+    --background: #A56946; /* Set the background color to brown */
+    --color: #ffffff; /* Set the text color to white */
+    --border-radius: 20px;
+    border-radius: 20px; /* Add border radius */
+    margin: 0 10px; /* Add some margin */
+  }   

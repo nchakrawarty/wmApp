@@ -1,4 +1,13 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { WasteService } from '../waste.service';
+
+interface WasteItem {
+  newCenterid: number;
+  name: string;
+  amount: number;
+  date: string; 
+}
 
 @Component({
   selector: 'app-recycle-add',
@@ -6,24 +15,44 @@ import { Component } from '@angular/core';
   styleUrls: ['./recycle-add.page.scss'],
 })
 export class RecycleAddPage {
-  selectedWaste: string =" ";
-  kg: number = 0;
-  wasteList: { id: number,waste: string, kg: number }[] = [];
+  selectedWaste: string = "";
+  amount: number = 0;
+  wasteList: WasteItem[] = [];
   nextId: number = 1;
+  imageList: string[] = [];
+  date: string; 
 
+  constructor(private router: Router, private wasteService: WasteService) {
+    this.date = new Date().toISOString(); 
+  }
 
-  constructor() {}
+  addWaste() {
+    if (this.selectedWaste && this.amount > 0) {
+      this.wasteList.push({ newCenterid: this.nextId++, name: this.selectedWaste, amount: this.amount, date: this.date });
+
+      
+      this.selectedWaste = "";
+      this.amount = 0;
+    }
+  }
+
+  removeWaste(id: number) {
+    this.wasteList = this.wasteList.filter(item => item.newCenterid !== id);
+  }
 
   saveWaste() {
-    if (this.selectedWaste && this.kg > 0) {
-      this.wasteList.push({ id: this.nextId++, waste: this.selectedWaste, kg: this.kg });
+    this.wasteService.postWastes(this.wasteList).subscribe(
+      response => {
+        console.log('Waste data successfully posted:', response);
+        
 
-    // Clear input values after saving
-    this.selectedWaste = " ";
-    this.kg = 0;
+        
+        this.wasteList = [];
+      },
+      error => {
+        console.error('Error posting waste data:', error);
+       
+      }
+    );
   }
-}
-removeWaste(id: number) {
-  this.wasteList = this.wasteList.filter(item => item.id !== id);
-}
 }

@@ -14,14 +14,13 @@ export class LoginPage {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    // Perform authentication logic here
-    if (this.authService.authenticate()) {
-      // Authentication successful, navigate to home page
+     // Call the authentication method from AuthService
+     if (this.authService.authenticate(this.username, this.password)) {
+      // If authentication is successful, navigate to the home page
       this.router.navigateByUrl('/home');
     } else {
-      // Authentication failed, display error message
+      // If authentication fails, you can handle it here (e.g., show an error message)
       console.log('Authentication failed');
-      // display error message to the user using toast
     }
   }
 }
