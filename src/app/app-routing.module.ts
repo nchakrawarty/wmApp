@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { HomePage } from './home/home.page';
 import { AuthGuard } from './auth.guard';
 import { LoginPage } from './login/login.page';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
   { path: 'login', component: LoginPage },
-  { path: 'home', component: HomePage, canActivate: [AuthGuard] },
+  
   // {
   //   path: '',
   //   redirectTo: 'folder/Inbox',
@@ -15,19 +14,17 @@ const routes: Routes = [
   // },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-    {
     path: 'trips',
-    loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule)
+    loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'qrscan',
@@ -52,10 +49,15 @@ const routes: Routes = [
   {
     path: 'recycle-add',
     loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule)
-  },  {
+  },
+  {
     path: 'items-inside',
     loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
+  },  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   }
+
 
 ];
 
