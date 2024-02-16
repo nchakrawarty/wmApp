@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-import { CameraResultType,CameraSource } from '@capacitor/camera';
+import { CameraResultType,Camera} from '@capacitor/camera';
 
 
 
-const { Camera } = Plugins;
+
 
 @Component({
   selector: 'app-add-image',
@@ -12,27 +12,25 @@ const { Camera } = Plugins;
   styleUrls: ['./add-image.page.scss'],
 })
 export class AddImagePage {
-  imageList: string[] = [];
+picture:any;
 
   constructor() {}
 
   async takePhoto() {
-    try {
-      const image = await Camera['getPhoto'] ({
+    
+      const image = await Camera.getPhoto ({
         quality: 100,
         allowEditing: false,
-        resultType: CameraResultType.Uri,
-        source: CameraSource.Camera,
+        resultType: CameraResultType.DataUrl,
+      
       });
-      this.imageList.push(image.webPath);
-    } catch (error) {
-      console.error('Error taking photo:', error);
-    }
+      this.picture= image.dataUrl;
+    
   }
 
   saveImages() {
     
-    console.log('Images to be saved:', this.imageList);
+    console.log('Images to be saved:', this.picture);
     
   }
 } 
