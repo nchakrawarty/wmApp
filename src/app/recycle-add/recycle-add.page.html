@@ -1,8 +1,6 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="orange">
       <ion-title></ion-title>
-      
-      <!-- Back icon -->
        <ion-buttons slot="start"> 
            <ion-back-button defaultHref="home"></ion-back-button>
        </ion-buttons> 
@@ -30,14 +28,14 @@
     <ion-input type="number" [(ngModel)]="amount" placeholder="Enter Kilograms"></ion-input>
   </ion-item>
 
-  <ion-button expand="full" (click)="addWaste()">Add</ion-button>
+  <ion-button color="orange" expand="full" (click)="addWaste()">Add</ion-button>
   <h6>List of items to be added</h6>
   <ion-card *ngIf="wasteList.length > 0">
     <ion-card-content>
       <ion-list>
         <ion-item *ngFor="let item of wasteList">
           <ion-label>{{ item.name }} - {{ item.amount }} kg</ion-label>
-          <ion-button slot="end" (click)="removeWaste(item.newCenterid)">Delete</ion-button>
+          <ion-button  color="orange" slot="end" (click)="removeWaste(item.newCenterid)">Delete</ion-button>
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -45,5 +43,5 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button expand="block" (click)="saveWaste()">Save</ion-button>
+  <ion-button color="orange" expand="block" (click)="saveWaste()">Save</ion-button>
 </ion-footer>

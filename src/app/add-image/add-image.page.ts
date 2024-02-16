@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { Plugins } from '@capacitor/core';
-import { CameraResultType,Camera} from '@capacitor/camera';
+import { Plugins} from '@capacitor/core';
+import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
+
+import { Camera as CapacitorCamera, CameraResultType } from '@capacitor/camera';
 
 
 
-
+const { Camera } = Plugins; 
 
 @Component({
   selector: 'app-add-image',
@@ -12,25 +14,48 @@ import { CameraResultType,Camera} from '@capacitor/camera';
   styleUrls: ['./add-image.page.scss'],
 })
 export class AddImagePage {
-picture:any;
+  picture: any;
 
   constructor() {}
 
   async takePhoto() {
-    
-      const image = await Camera.getPhoto ({
+    try {
+      const image = await Camera['getPhoto']({
         quality: 100,
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
-      
       });
-      this.picture= image.dataUrl;
-    
+      if (image && image.dataUrl) {
+        this.picture = image.dataUrl;
+       
+      } else {
+        console.warn('No image captured.');
+      }
+    } catch (error) {
+      console.error('Error taking photo:', error);
+    }
   }
 
-  saveImages() {
-    
-    console.log('Images to be saved:', this.picture);
-    
+
+  async saveImages() {
+    if (!this.picture) {
+      console.error('No image to save.');
+      return;
+    }
+
+    const fileName = `photo_${new Date().getTime()}.jpeg`; 
+    const path = fileName;
+    try {
+      
+      await Filesystem.writeFile({
+        path,
+        data: this.picture,
+        directory: FilesystemDirectory.Data,
+      });
+
+      console.log('Image saved successfully:', path);
+    } catch (error) {
+      console.error('Error saving image:', error);
+    }
   }
-} 
+}

@@ -6,7 +6,7 @@ interface WasteItem {
   newCenterid: number;
   name: string;
   amount: number;
-  date: string; // Date property in ISO 8601 format
+  date: string; 
 }
 
 @Component({
@@ -20,17 +20,17 @@ export class RecycleAddPage {
   wasteList: WasteItem[] = [];
   nextId: number = 1;
   imageList: string[] = [];
-  date: string; // Declare the date property
+  date: string; 
 
   constructor(private router: Router, private wasteService: WasteService) {
-    this.date = new Date().toISOString(); // Initialize the date property with current date
+    this.date = new Date().toISOString(); 
   }
 
   addWaste() {
     if (this.selectedWaste && this.amount > 0) {
       this.wasteList.push({ newCenterid: this.nextId++, name: this.selectedWaste, amount: this.amount, date: this.date });
 
-      // Clear input values after saving
+      
       this.selectedWaste = "";
       this.amount = 0;
     }
@@ -44,14 +44,14 @@ export class RecycleAddPage {
     this.wasteService.postWastes(this.wasteList).subscribe(
       response => {
         console.log('Waste data successfully posted:', response);
-        // Redirect or perform any other action after successful post
+        
 
-        // Clear the waste list after successful post
+        
         this.wasteList = [];
       },
       error => {
         console.error('Error posting waste data:', error);
-        // Handle error appropriately
+       
       }
     );
   }
