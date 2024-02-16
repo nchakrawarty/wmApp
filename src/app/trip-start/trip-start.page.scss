@@ -9,6 +9,11 @@ ion-input {
     border-radius: 10px;
     height: 54px;
     --padding-start: 15px;
+    --padding-end: 15px;
+}
+
+ion-input:hover {
+    background-color: #e6e7e9;
 }
 
 span {

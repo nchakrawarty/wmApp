@@ -1,13 +1,59 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>trip-end</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>End Trip</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">trip-end</ion-title>
+      <ion-title size="large">End Trip</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <h5>Trip</h5>
+
+  <ion-row>
+    <span>Date</span>
+    <ion-input aria-label="date" type="Date" disabled="true" value="2023-02-16"></ion-input>
+  </ion-row>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <span>Start Time</span>
+        <ion-input aria-label="start-time" type="Time" disabled="true" value="10:30"></ion-input>
+      </ion-col>
+      <ion-col>
+        <span>Start Time</span>
+        <ion-input aria-label="time" type="Time" value="13:30"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <span>Vehicle Number</span>
+      <ion-input aria-label="vehicle-number" type="text" disabled="true" value="KA00 AA0000"></ion-input>
+    </ion-row>
+
+    <ion-row>
+      <span>Driver</span>
+      <ion-input aria-label="driver" type="text" disabled="true" value="Raju A"></ion-input>
+    </ion-row>
+
+    <ion-row>
+      <span>Line Employee 1</span>
+      <ion-input aria-label="line-employee-1" type="text" disabled="true" value="Raju B"></ion-input>
+    </ion-row>
+
+    <ion-row>
+      <span>Line Employee 2</span>
+      <ion-input aria-label="line-employee-2" type="text" disabled="true" value="Raju C"></ion-input>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button expand="block">End Trip</ion-button>
+
 </ion-content>
