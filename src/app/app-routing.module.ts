@@ -52,10 +52,19 @@ const routes: Routes = [
   {
     path: 'recycle-add',
     loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule)
-  },  {
+  },
+  {
     path: 'items-inside',
     loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
+  },  {
+    path: 'trip-start',
+    loadChildren: () => import('./trip-start/trip-start.module').then( m => m.TripStartPageModule)
+  },
+  {
+    path: 'trip-end',
+    loadChildren: () => import('./trip-end/trip-end.module').then( m => m.TripEndPageModule)
   }
+
 
 ];
 
