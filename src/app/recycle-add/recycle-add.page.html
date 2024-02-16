@@ -1,17 +1,17 @@
 <ion-header>
   <ion-toolbar color="primary">
       <ion-title></ion-title>
-      <!-- Menu Icon -->
-      <ion-buttons slot="start">
-          <ion-menu-button  ></ion-menu-button>
-      </ion-buttons>
-  <!-- Back icon -->
+      
+      <!-- Back icon -->
        <ion-buttons slot="start"> 
-       <ion-back-button defaultHref="home"></ion-back-button>
-      </ion-buttons> 
+           <ion-back-button defaultHref="home"></ion-back-button>
+       </ion-buttons> 
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
+  <p>Recycle</p>
+  <br>
   <ion-item lines="none">
     <ion-label position="stacked">Waste</ion-label>
     <ion-select [(ngModel)]="selectedWaste" placeholder="Select Waste">
@@ -27,48 +27,23 @@
 
   <ion-item lines="none">
     <ion-label position="stacked">Kilograms</ion-label>
-    <ion-input type="number" [(ngModel)]="kg" placeholder="Enter Kilograms"></ion-input>
+    <ion-input type="number" [(ngModel)]="amount" placeholder="Enter Kilograms"></ion-input>
   </ion-item>
 
-  <ion-button expand="full" (click)="saveWaste()">Add</ion-button>
-<h6>List of items to be added</h6>
-<ion-card *ngIf="wasteList.length > 0">
-  <ion-card-content>
-    <ion-list>
-      <ion-item *ngFor="let item of wasteList">
-        <ion-label>{{ item.waste }} - {{ item.kg }} kg</ion-label>
-        <ion-button slot="end" (click)="removeWaste(item.id)">Delete</ion-button>
-      </ion-item>
-    </ion-list>
-  </ion-card-content>
-</ion-card>
-</ion-content> 
+  <ion-button expand="full" (click)="addWaste()">Add</ion-button>
+  <h6>List of items to be added</h6>
+  <ion-card *ngIf="wasteList.length > 0">
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of wasteList">
+          <ion-label>{{ item.name }} - {{ item.amount }} kg</ion-label>
+          <ion-button slot="end" (click)="removeWaste(item.newCenterid)">Delete</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
 
-
-
-<!--  
- <ion-footer>
-<ion-card>
-  <ion-grid>
-    <ion-row class="ion-text-center">
-      <ion-col size="3" routerLink="/home">
-        <ion-icon name="home" color="grey"></ion-icon>
-        <p>Home</p>
-      </ion-col>
-      <ion-col size="3" routerLink="/about">
-        <ion-icon name="person-outline" color="grey"></ion-icon>
-        <p>Customer</p>
-      </ion-col>
-      <ion-col size="3" routerLink="/contact">
-        <ion-icon name="chatbox" color="grey"></ion-icon>
-        <p>Trips</p>
-      </ion-col>
-      <ion-col size="3" routerLink="/contact">
-        <ion-icon name="chatbox" color="grey"></ion-icon>
-        <p>Sell</p>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-card>
-</ion-footer>-->
-
+<ion-footer>
+  <ion-button expand="block" (click)="saveWaste()">Save</ion-button>
+</ion-footer>
