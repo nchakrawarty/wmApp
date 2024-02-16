@@ -1,0 +1,81 @@
+.container {
+    max-width: 304px;
+    height: 555px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff; // Adjust background color as needed
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+  
+  .welcome-text {
+    width: 116px;
+    height: 36px;
+    top: 336px;
+    left: 28px;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #A56946;
+  }
+  
+  ion-input.input1 {
+    --width: 304px;
+    --height: 50px;
+    --top: 406px;
+    --left: 10px;
+    --border-radius: 8px;
+    --background: #D9D9D9;
+  }
+
+  ion-input.input2 {
+    --width: 304px;
+    --height: 50px;
+    --top: 484px;
+    --left: 10px;
+    --border-radius: 8px;
+    --background: #D9D9D9;
+  }
+  
+  ion-button {
+    --background: #316974;
+    --border-radius: 8px;
+    --width: 304px;
+    --height: 40px;
+    --top: 555px;
+    --left: 28px;
+    --gap: 10px;
+  }
+
+  .label1 {
+    width: 88px;
+    height: 18px;
+    top: 350px;
+    left: 28px;
+    color: #00000066;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  .label2 {
+    width: 88px;
+    height: 18px;
+    top: 450px;
+    left: 28px;
+    color: #00000066;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .signup-text {
+    margin-top: 16px;
+    color: #333;
+  }
+  
