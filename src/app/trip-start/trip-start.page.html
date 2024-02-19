@@ -20,11 +20,11 @@
     <ion-row>
       <ion-col>
         <span>Date</span>
-        <ion-input aria-label="date" type="Date"></ion-input>
+        <ion-input aria-label="date" type="Date" value="{{ date }}"></ion-input>
       </ion-col>
       <ion-col>
         <span>Start Time</span>
-        <ion-input aria-label="time" type="Time"></ion-input>
+        <ion-input aria-label="time" type="Time" value="{{ time }}"></ion-input>
       </ion-col>
     </ion-row>
 
@@ -49,6 +49,6 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button expand="block">Start Trip</ion-button>
+  <ion-button expand="block" (click)="startTrip()">Start Trip</ion-button>
 
 </ion-content>

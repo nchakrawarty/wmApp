@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trips',
@@ -7,14 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripsPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  ionViewWillEnter() {
+    
+  }
+
+  addTrip() {
+    this.router.navigate(['trip-start']);
+  }
+
   endTrip(id_trip_div: string) {
-    document.getElementById(id_trip_div)?.setAttribute("hidden","true");
-    document.getElementById("trips-for-the-day-heading")?.setAttribute("hidden","true");
+    this.router.navigate(['trip-end']);
+    //document.getElementById(id_trip_div)?.setAttribute("hidden","true");
+    //document.getElementById("trips-for-the-day-heading")?.setAttribute("hidden","true");
   }
 
   expand(id_item: string, id_expand: string, id_icon: string) {
