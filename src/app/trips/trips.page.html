@@ -27,7 +27,7 @@
   
     <ion-card-content>
       <ion-grid class="ion-no-padding">
-        <ion-row>
+        <ion-row class="top-row">
           <ion-col>
             <ion-card-subtitle>Total Trips</ion-card-subtitle>
             <span>212 Trips</span>
@@ -43,5 +43,68 @@
     </ion-card-content>
   </ion-card>
   
-  <span>Test</span>
+  <div id="trips-for-the-day">
+    <p id="side-heading">Trips for the Day</p>
+    <ion-card id="trips-for-the-day-card">  
+      <ion-card-content>
+        <ion-item class="ion-no-padding">
+          <ion-grid class="ion-no-padding">
+            <ion-row style="padding-bottom: 5%;">
+              <ion-col>
+                <ion-card-subtitle>Date</ion-card-subtitle>
+                <span>01-01-2024</span>
+              </ion-col>
+              <ion-col></ion-col>
+              <ion-col>
+                <ion-card-subtitle>Vehicle Number</ion-card-subtitle>
+                <span>KA00 AAAA0000</span>
+              </ion-col>
+            </ion-row>
+    
+            <ion-row style="padding-bottom: 5%;">
+              <ion-col>
+                <ion-card-subtitle>Start Time</ion-card-subtitle>
+                <span>10:30 AM</span>
+              </ion-col>
+              <ion-col></ion-col>
+              <ion-col>
+                <ion-card-subtitle>End Time</ion-card-subtitle>
+                <span>01:30 PM</span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row style="padding-bottom: 5%; padding-top: 5%;">
+            <ion-col>
+              <ion-card-subtitle>Driver Name</ion-card-subtitle>
+              <span>Raju A</span>
+            </ion-col>
+          </ion-row>
+
+          <ion-row style="padding-bottom: 5%;">
+            <ion-col>
+              <ion-card-subtitle>Line Employee 1</ion-card-subtitle>
+              <span>Raju B</span>
+            </ion-col>
+          </ion-row>
+
+          <ion-row style="padding-bottom: 5%;">
+            <ion-col>
+              <ion-card-subtitle>Line Employee 2</ion-card-subtitle>
+              <span>Raju C</span>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block">End Trip</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>

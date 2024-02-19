@@ -1,4 +1,5 @@
-ion-grid span {
+span {
+    font-size: 12px;
     font-weight: bolder;
     color: black;
 }
@@ -11,4 +12,18 @@ ion-card {
     background-color: #F6F7F9;
     box-shadow: none;
     border-radius: 10px;
+}
+
+#side-heading {
+    padding-left: 10px;
+    color:#96979B;
+}
+
+ion-item {
+    --background: none;
+    --border-color: #a56946;
+}
+
+ion-button {
+    --background: #a56946;
 }
