@@ -24,6 +24,16 @@ ion-item {
     --border-color: #a56946;
 }
 
-ion-button {
+ion-button#end-trip-button {
     --background: #a56946;
+    color: white;
+}
+
+ion-button {
+    color: #a56946;
+    --ripple-color: transparent;
+    padding: 0%;
+    height: 0%;
+    margin: 0%;
+    border: 0%;
 }
