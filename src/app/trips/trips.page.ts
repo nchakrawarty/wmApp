@@ -14,6 +14,7 @@ export class TripsPage implements OnInit {
 
   endTrip(id_trip_div: string) {
     document.getElementById(id_trip_div)?.setAttribute("hidden","true");
+    document.getElementById("trips-for-the-day-heading")?.setAttribute("hidden","true");
   }
 
   expand(id_item: string, id_expand: string, id_icon: string) {
