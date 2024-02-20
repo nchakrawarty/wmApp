@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { TripService } from '../trip.service';
+
 @Component({
   selector: 'app-trips',
   templateUrl: './trips.page.html',
@@ -8,13 +10,31 @@ import { Router } from '@angular/router';
 })
 export class TripsPage implements OnInit {
 
-  constructor(private router: Router) { }
+  tripList: any;
+  vehicleTrackList: any;
+
+  constructor(private router: Router, private tripService: TripService) {
+    this.getVehicleTrack();
+    this.getTrips();
+  }
 
   ngOnInit() {
   }
 
   ionViewWillEnter() {
     
+  }
+
+  getVehicleTrack() {
+    this.tripService.getVehicleTrack().then(data => {
+      this.vehicleTrackList=data;
+    });
+  }
+
+  getTrips() {
+    this.tripService.getTrips().then(data => {
+      this.tripList=data;
+    });
   }
 
   addTrip() {
@@ -28,9 +48,10 @@ export class TripsPage implements OnInit {
   }
 
   expand(id_item: string, id_expand: string, id_icon: string) {
-    let item = document.getElementById(id_item);
-    let expand = document.getElementById(id_expand);
-    let icon = document.getElementById(id_icon);
+    console.log(id_item);
+    var item = document.getElementById(id_item);
+    var expand = document.getElementById(id_expand);
+    var icon = document.getElementById(id_icon);
     if(item?.getAttribute("lines") === "none") {
       item?.setAttribute("lines","inset");
     } else {
@@ -47,5 +68,4 @@ export class TripsPage implements OnInit {
       icon?.setAttribute("name","chevron-down-outline");
     }
   }
-
 }
