@@ -29,6 +29,14 @@ export class TripService {
     });
   }
 
+  getTripCount() {
+    return new Promise(resolve => {
+      this.http.get(this.apiBaseUrl+'trips/count').subscribe(data => {
+        resolve(data);
+      })
+    });
+  }
+
   addTrip(trip: any) {
     return new Promise(resolve => {
       this.http.post(this.apiBaseUrl+'trips/', trip).subscribe(data => {
@@ -64,6 +72,14 @@ export class TripService {
   getVehicleTracks() {
     return new Promise(resolve => {
       this.http.get(this.apiBaseUrl+'vehicleTracks/').subscribe(data => {
+        resolve(data);
+      })
+    });
+  }
+
+  getVehicleTrackCount() {
+    return new Promise(resolve => {
+      this.http.get(this.apiBaseUrl+'vehicleTracks/count').subscribe(data => {
         resolve(data);
       })
     });

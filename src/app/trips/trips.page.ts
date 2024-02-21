@@ -12,10 +12,14 @@ export class TripsPage implements OnInit {
 
   tripList: any;
   vehicleTrackList: any;
+  totalTrips: number = 0;
+  tripsToday: number = 0;
 
   constructor(private tripService: TripService, private navCtrl: NavController) {
     this.getVehicleTracks();
+    this.getVehicleTrackCount();
     this.getTrips();
+    this.getTripCount();
   }
 
   ngOnInit() {
@@ -27,9 +31,23 @@ export class TripsPage implements OnInit {
     });
   }
 
+  getVehicleTrackCount() {
+    this.tripService.getVehicleTrackCount().then(data => {
+      let tripsToday: any = data;
+      this.tripsToday = tripsToday.count;
+    });
+  }
+
   getTrips() {
     this.tripService.getTrips().then(data => {
       this.tripList=data;
+    });
+  }
+
+  getTripCount() {
+    this.tripService.getTripCount().then(data => {
+      let totalTrips: any = data;
+      this.totalTrips = totalTrips.count;
     });
   }
 
