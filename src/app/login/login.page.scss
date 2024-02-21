@@ -1,4 +1,54 @@
-.container {
+ion-content.ion-padding {
+  --background: #f4f5f8;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+ion-card {
+  max-width: 400px;
+  max-height: 100%;
+  margin: auto;
+   /* Limit card width */
+}
+
+ion-button {
+  margin-top: 20px;
+  --background: #316974; /* Set button background color */
+}
+
+.welcome-text {
+  color: #A56946;
+  font-family: 'Poppins';
+  font-weight: 550;
+  font-size: 29px; 
+}
+
+ion-item {
+  --ion-color-base: #ccc; /* Set color of input fields */
+}
+
+placeholder::placeholder {
+  color: #ccc; /* Set color of the placeholder text */
+}
+
+.ion-margin-top {
+  margin-top: 20px; /* Add margin above the "Sign up" link */
+}
+
+.bottom-image {
+  display: block; /* Ensure the image behaves as a block element */
+  margin: 40px auto 20px auto; /* Center the image horizontally */
+  max-width: 30%; /* Set the maximum width of the image */
+  height: auto; /* Maintain the image's aspect ratio */
+}
+
+
+/*.container {
     max-width: 304px;
     height: 555px;
     margin: auto;
@@ -77,5 +127,5 @@
   .signup-text {
     margin-top: 16px;
     color: #333;
-  }
+  }*/
   

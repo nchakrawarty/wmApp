@@ -1,3 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Log In</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="center-container">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="welcome-text">Welcome</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Email" class="placeholder"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Password" class="placeholder"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button expand="block" (click)="login()" [disabled]="isLoading">
+        <ion-spinner *ngIf="isLoading" slot="start"></ion-spinner>
+        <span *ngIf="!isLoading">Log In</span>
+      </ion-button>
+    <p class="ion-text-center ion-margin-top" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <p class="ion-text-center ion-margin-top">Don't have an account? <a routerLink="/register">Sign Up</a></p>
+    <img src="assets/group-1.png" alt="Logo" class="bottom-image">
+    </ion-card-content>
+  </ion-card>
+</div>
+</ion-content>
+
+<!--
 <ion-content>
 <div class="container">
   <h2 class="welcome-text">Welcome</h2>
@@ -12,4 +46,4 @@
   <ion-button expand="block" class="login-button" (click)="login()">Log In</ion-button>
   <p class="signup-text">Don't have an account? <a routerLink="/register">Sign up</a></p>
 </div>
-</ion-content>
+</ion-content>-->
