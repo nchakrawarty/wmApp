@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 import { TripService } from '../trip.service';
 
@@ -13,20 +13,16 @@ export class TripsPage implements OnInit {
   tripList: any;
   vehicleTrackList: any;
 
-  constructor(private router: Router, private tripService: TripService) {
-    this.getVehicleTrack();
+  constructor(private tripService: TripService, private navCtrl: NavController) {
+    this.getVehicleTracks();
     this.getTrips();
   }
 
   ngOnInit() {
   }
 
-  ionViewWillEnter() {
-    
-  }
-
-  getVehicleTrack() {
-    this.tripService.getVehicleTrack().then(data => {
+  getVehicleTracks() {
+    this.tripService.getVehicleTracks().then(data => {
       this.vehicleTrackList=data;
     });
   }
@@ -38,13 +34,11 @@ export class TripsPage implements OnInit {
   }
 
   addTrip() {
-    this.router.navigate(['trip-start']);
+    this.navCtrl.navigateForward('trip-start');
   }
 
-  endTrip(id_trip_div: string) {
-    this.router.navigate(['trip-end']);
-    //document.getElementById(id_trip_div)?.setAttribute("hidden","true");
-    //document.getElementById("trips-for-the-day-heading")?.setAttribute("hidden","true");
+  endTrip(track: any) {
+    this.navCtrl.navigateForward('trip-end', {state: track});
   }
 
   expand(id_item: string, id_expand: string, id_icon: string) {

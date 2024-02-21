@@ -30,4 +30,10 @@ ion-button {
     --background: #A56946;
     --color: #ffffff;
     font-variant: normal;
-  }
+}
+
+ion-toast {
+    --border-radius: 10px;
+    text-align: center;
+    opacity: 0.85;
+}
