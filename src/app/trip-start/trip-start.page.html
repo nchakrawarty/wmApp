@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Start Trip</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Start Trip</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <h5>New Trip</h5>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <span>Date</span>
+        <ion-input name="date" type="Date" value="{{ date }}" [(ngModel)]="date"></ion-input>
+      </ion-col>
+      <ion-col>
+        <span>Start Time</span>
+        <ion-input name="time" type="Time" value="{{ time }}" [(ngModel)]="time"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <span>Vehicle Number</span>
+      <ion-input name="vehicle-number" type="text" [(ngModel)]="vehicleNum"></ion-input>
+    </ion-row>
+
+    <ion-row>
+      <span>Driver</span>
+      <ion-input name="driver" type="text" [(ngModel)]="driver"></ion-input>
+    </ion-row>
+
+    <ion-row>
+      <span>Line Employee 1</span>
+      <ion-input name="line-employee-1" type="text" [(ngModel)]="lineEmp1"></ion-input>
+    </ion-row>
+
+    <ion-row>
+      <span>Line Employee 2</span>
+      <ion-input name="line-employee-2" type="text" [(ngModel)]="lineEmp2"></ion-input>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button id="submit-button" expand="block" (click)="startTrip()">Start Trip</ion-button>
+  <ion-toast id="submit-status" trigger="submit-button" message="Start trip!" [duration]="4000"></ion-toast>
+
+</ion-content>
