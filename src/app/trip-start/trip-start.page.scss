@@ -1,0 +1,33 @@
+h5 {
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+}
+
+ion-input {
+    background-color: #F6F7F9;
+    border-radius: 10px;
+    height: 54px;
+    --padding-start: 15px;
+    --padding-end: 15px;
+}
+
+ion-input:hover {
+    background-color: #e6e7e9;
+}
+
+span {
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    color: #96979B;
+}
+
+ion-row {
+    margin-bottom: 5%;
+}
+
+ion-button {
+    --background: #316974;
+    --color: #ffffff;
+    font-variant: normal;
+}
