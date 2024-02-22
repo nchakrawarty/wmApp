@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { LoginPage } from './login/login.page';
 import { HomePage } from './home/home.page';
-import { ItemsInsidePage } from './items-inside/items-inside.page';
+//import { ItemsInsidePage } from './items-inside/items-inside.page';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
