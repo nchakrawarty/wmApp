@@ -18,39 +18,39 @@
 
   <ion-row>
     <span>Date</span>
-    <ion-input aria-label="date" type="Date" [readonly]="true" value="{{ vehicleTrack['date'] }}"></ion-input>
+    <ion-input name="date" type="Date" [readonly]="true" value="{{ vehicleTrack['date'] }}"></ion-input>
   </ion-row>
 
   <ion-grid>
     <ion-row>
       <ion-col>
         <span>Start Time</span>
-        <ion-input aria-label="start-time" type="Time" [readonly]="true" value="{{ vehicleTrack['start-time'] }}"></ion-input>
+        <ion-input name="start-time" type="Time" [readonly]="true" value="{{ vehicleTrack['start-time'] }}"></ion-input>
       </ion-col>
       <ion-col>
         <span>End Time</span>
-        <ion-input aria-label="time" type="Time" value="{{ time }}" [(ngModel)]="time"></ion-input>
+        <ion-input name="time" type="Time" value="{{ time }}" [(ngModel)]="time"></ion-input>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <span>Vehicle Number</span>
-      <ion-input aria-label="vehicle-number" type="text" [readonly]="true" value="{{ vehicleTrack['vehicle-number'] }}"></ion-input>
+      <ion-input name="vehicle-number" type="text" [readonly]="true" value="{{ vehicleTrack['vehicle-number'] }}"></ion-input>
     </ion-row>
 
     <ion-row>
       <span>Driver</span>
-      <ion-input aria-label="driver" type="text" [readonly]="true" value="{{ vehicleTrack['driver-name'] }}"></ion-input>
+      <ion-input name="driver" type="text" [readonly]="true" value="{{ vehicleTrack['driver-name'] }}"></ion-input>
     </ion-row>
 
     <ion-row>
       <span>Line Employee 1</span>
-      <ion-input aria-label="line-employee-1" type="text" [readonly]="true" value="{{ vehicleTrack['line-employee-1'] }}"></ion-input>
+      <ion-input name="line-employee-1" type="text" [readonly]="true" value="{{ vehicleTrack['line-employee-1'] }}"></ion-input>
     </ion-row>
 
     <ion-row>
       <span>Line Employee 2</span>
-      <ion-input aria-label="line-employee-2" type="text" [readonly]="true" value="{{ vehicleTrack['line-employee-2'] }}"></ion-input>
+      <ion-input name="line-employee-2" type="text" [readonly]="true" value="{{ vehicleTrack['line-employee-2'] }}"></ion-input>
     </ion-row>
   </ion-grid>
 
