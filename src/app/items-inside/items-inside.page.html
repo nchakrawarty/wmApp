@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="orange">
       <ion-title></ion-title>
       
       
@@ -8,14 +8,15 @@
       </ion-buttons> 
   </ion-toolbar>
 </ion-header>
-<ion-tabs contentId="main-content">
- 
-    
-    <ion-tab-button tab="KRT">
-
-      <ion-icon src="../../assets/Vector-qHZ">KRT <br><P> Recyclable</P></ion-icon>
-      
-    </ion-tab-button>
- 
-</ion-tabs>
-
+<ion-content>
+  <ion-card *ngFor="let waste of wasteDetails">
+    <ion-card-header>
+      <ion-card-title>{{ waste.type }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Amount Collected: {{ waste.amount }}
+      <br>
+      Date and Time: {{ waste.dateTime }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

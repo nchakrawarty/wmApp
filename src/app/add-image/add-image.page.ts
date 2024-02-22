@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { Plugins} from '@capacitor/core';
+import { Plugins } from '@capacitor/core';
 import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
+import { CameraResultType, CameraSource } from '@capacitor/camera';
 
-import { Camera as CapacitorCamera, CameraResultType } from '@capacitor/camera';
-
-
-
-const { Camera } = Plugins; 
+const { Camera } = Plugins;
 
 @Component({
   selector: 'app-add-image',
@@ -14,20 +11,21 @@ const { Camera } = Plugins;
   styleUrls: ['./add-image.page.scss'],
 })
 export class AddImagePage {
-  picture: any;
+  pictures: string[] = [];
 
   constructor() {}
 
   async takePhoto() {
     try {
-      const image = await Camera['getPhoto']({
+      const capturedPhoto = await Camera['getPhoto']({
         quality: 100,
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera,
       });
-      if (image && image.dataUrl) {
-        this.picture = image.dataUrl;
-       
+
+      if (capturedPhoto && capturedPhoto.dataUrl) {
+        this.pictures.push(capturedPhoto.dataUrl);
       } else {
         console.warn('No image captured.');
       }
@@ -36,26 +34,26 @@ export class AddImagePage {
     }
   }
 
-
   async saveImages() {
-    if (!this.picture) {
-      console.error('No image to save.');
+    if (this.pictures.length === 0) {
+      console.error('No images to save.');
       return;
     }
 
-    const fileName = `photo_${new Date().getTime()}.jpeg`; 
-    const path = fileName;
     try {
-      
-      await Filesystem.writeFile({
-        path,
-        data: this.picture,
-        directory: FilesystemDirectory.Data,
-      });
-
-      console.log('Image saved successfully:', path);
+      for (let i = 0; i < this.pictures.length; i++) {
+        const fileName = `temp_photo_${new Date().getTime()}_${i}.jpeg`;
+        // Use forward slashes and escape backslashes in the file path
+        const path = `/src/assets/${fileName}`; 
+        await Filesystem.writeFile({
+          path,
+          data: this.pictures[i],
+          directory: FilesystemDirectory.Data,
+        });
+        console.log('Image saved successfully:', path);
+      }
     } catch (error) {
-      console.error('Error saving image:', error);
+      console.error('Error saving images:', error);
     }
   }
 }
