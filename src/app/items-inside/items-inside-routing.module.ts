@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ItemsInsidePage } from './items-inside.page';
+//import { ItemsInsidePage } from './items-inside';
 
 const routes: Routes = [
   {
     path: '',
-    component: ItemsInsidePage
+    //component: ItemsInsidePage
   }
 ];
 

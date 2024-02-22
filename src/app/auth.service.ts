@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { environment } from '../environments/environment.prod';
+import { Urls } from './constants/urls';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -18,7 +18,7 @@ export class AuthService {
   // Perform basic authentication logic here
   authenticate(email: string, password: string): Observable<any> {
      // Make an HTTP post request to the backend API endpoint to retrieve accesstoken
-    return this.http.post<any>(`${environment.apiUrl}/Users/login`,{ email, password }).pipe(
+    return this.http.post<any>(`${Urls.LOGIN}`,{ email, password }).pipe(
     map(response => {
       // Check if a user with the provided email exists
       if (response && response.id) {
@@ -46,7 +46,7 @@ export class AuthService {
 
 // Example: Get user profile data
 private getUserData(accessToken: string,userId: string): Observable<any> {
-  return this.http.get<any>(`${environment.apiUrl}/Users/${userId}?accessToken=${accessToken}`).pipe(
+  return this.http.get<any>(`${Urls.USERS}/${userId}?accessToken=${accessToken}`).pipe(
     catchError(error => {
       console.error('Failed to fetch user data:', error);
       throw error;
