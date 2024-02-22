@@ -54,7 +54,15 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button id="submit-button" expand="block" (click)="endTrip()">End Trip</ion-button>
+  <ion-button id="submit-button" expand="block">End Trip</ion-button>
+  <ion-alert
+    trigger="submit-button"
+    header="End Trip"
+    subHeader="Are you sure you want to end trip?"
+    message="Click 'Yes' to proceed."
+    [buttons]="alertButtons"
+    (didDismiss)="endTrip($event)">
+  </ion-alert>
   <ion-toast id="submit-status" trigger="submit-button" message="Start Trip" [duration]="5000"></ion-toast>
 
 </ion-content>

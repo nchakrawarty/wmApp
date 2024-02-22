@@ -25,6 +25,8 @@ export class TripsPage implements OnInit {
   ngOnInit() {
   }
 
+  
+
   getVehicleTracks() {
     this.tripService.getVehicleTracks().then(data => {
       this.vehicleTrackList=data;

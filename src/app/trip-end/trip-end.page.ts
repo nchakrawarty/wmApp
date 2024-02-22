@@ -10,6 +10,23 @@ import { TripService } from '../trip.service';
 })
 export class TripEndPage implements OnInit {
 
+  public alertButtons = [
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+        console.log('Alert canceled');
+      },
+    },
+    {
+      text: 'Yes',
+      role: 'confirm',
+      handler: () => {
+        console.log('Alert confirmed');
+      },
+    },
+  ];
+
   vehicleTrack: any;
   time: any = '';
 
@@ -21,10 +38,14 @@ export class TripEndPage implements OnInit {
     this.time = String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0');
   }
 
-  endTrip() {
+  setResult() {
+    console.log();
+  }
+
+  endTrip(ev: any) {
     let toast = document.getElementById('submit-status');
     //console.log(this.vehicleTrack);
-    if(confirm("Are you sure you want to delete student from database?")) {
+    if(ev.detail.role == 'confirm') {
       this.tripService.deleteVehicleTrack(this.vehicleTrack.id);
       let trip = {
         'date': this.vehicleTrack['date'],
@@ -40,10 +61,10 @@ export class TripEndPage implements OnInit {
         console.log(data);
       });
       toast?.setAttribute("message","Trip ended!");
-      this.location.back();
     } else {
       toast?.setAttribute("message","Failed to submit details!");
     }
+    this.location.back();
   }
 
 }
