@@ -18,6 +18,12 @@ const routes: Routes = [
      redirectTo: 'folder/Inbox',
      pathMatch: 'full'
   },
+  
+  // {
+  //   path: '',
+  //   redirectTo: 'folder/Inbox',
+  //   pathMatch: 'full'
+  // },
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule),
@@ -65,10 +71,6 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
    // canActivate: [AuthGuard]
-  },
-  {
-    path: 'items-inside',
-    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
   }
 
 
