@@ -3,13 +3,22 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { LoginPage } from './login/login.page';
 import { HomePage } from './home/home.page';
+import { EnterWastePage } from './enter-waste/enter-waste.page';
 //import { ItemsInsidePage } from './items-inside/items-inside.page';
 
+const routes: Routes = [
+  { path: '', redirectTo: 'enter-waste', pathMatch: 'full' }, // Set login page as default route
+  { path: 'enter-waste', component: EnterWastePage  },
+ // { path: 'home', component: HomePage, canActivate: [AuthGuard] },
+ { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+/*
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
   { path: 'login', component: LoginPage },
  // { path: 'home', component: HomePage, canActivate: [AuthGuard] },
  { path: '', redirectTo: 'home', pathMatch: 'full' },
+ */
   
 
 
