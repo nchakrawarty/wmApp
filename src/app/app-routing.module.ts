@@ -71,10 +71,15 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'trip-start',
+    loadChildren: () => import('./trip-start/trip-start.module').then( m => m.TripStartPageModule)
+  },
+  {
+    path: 'trip-end',
+    loadChildren: () => import('./trip-end/trip-end.module').then( m => m.TripEndPageModule)
   }
-
-
-
 ];
 
 @NgModule({
