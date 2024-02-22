@@ -8,27 +8,18 @@ import { ItemsInsidePage } from './items-inside/items-inside.page';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
   { path: 'login', component: LoginPage },
- // { path: 'home', component: HomePage, canActivate: [AuthGuard] },
- { path: '', redirectTo: 'home', pathMatch: 'full' },
-  
-
-
-  {
-     path: '',
-     redirectTo: 'folder/Inbox',
-     pathMatch: 'full'
-  },
-  
-  // {
-  //   path: '',
-  //   redirectTo: 'folder/Inbox',
-  //   pathMatch: 'full'
-  // },
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule),
-    canActivate: [AuthGuard]
-  },
+  { path: 'home', component: HomePage, canActivate: [AuthGuard] },
+ //{ path: '', redirectTo: 'home', pathMatch: 'full' },
+  //{
+     //path: '',
+     //redirectTo: 'folder/Inbox',
+    // pathMatch: 'full'
+  //},
+  //{
+    //path: 'folder/:id',
+    //loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule),
+   // canActivate: [AuthGuard]
+  //},
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -40,27 +31,33 @@ const routes: Routes = [
   },
   {
     path: 'qrscan',
-    loadChildren: () => import('./qrscan/qrscan.module').then( m => m.QRScanPageModule)
+    loadChildren: () => import('./qrscan/qrscan.module').then( m => m.QRScanPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'qrentry',
-    loadChildren: () => import('./qrentry/qrentry.module').then( m => m.QREntryPageModule)
+    loadChildren: () => import('./qrentry/qrentry.module').then( m => m.QREntryPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'enter-waste',
-    loadChildren: () => import('./enter-waste/enter-waste.module').then( m => m.EnterWastePageModule)
+    loadChildren: () => import('./enter-waste/enter-waste.module').then( m => m.EnterWastePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-payment',
-    loadChildren: () => import('./add-payment/add-payment.module').then( m => m.AddPaymentPageModule)
+    loadChildren: () => import('./add-payment/add-payment.module').then( m => m.AddPaymentPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-image',
-    loadChildren: () => import('./add-image/add-image.module').then( m => m.AddImagePageModule)
+    loadChildren: () => import('./add-image/add-image.module').then( m => m.AddImagePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'recycle-add',
-    loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule)
+    loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule),
+    canActivate: [AuthGuard]
   },
 
   {
@@ -70,7 +67,12 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-   // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'items-inside',
+    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule),
+    canActivate: [AuthGuard]
   }
 
 
