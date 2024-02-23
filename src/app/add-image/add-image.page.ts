@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Plugins} from '@capacitor/core';
-import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
+// import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
 
 import { Camera as CapacitorCamera, CameraResultType } from '@capacitor/camera';
 
 
 
-const { Camera } = Plugins; 
+const { Camera } = Plugins;
 
 @Component({
   selector: 'app-add-image',
@@ -27,7 +27,7 @@ export class AddImagePage {
       });
       if (image && image.dataUrl) {
         this.picture = image.dataUrl;
-       
+
       } else {
         console.warn('No image captured.');
       }
@@ -43,15 +43,15 @@ export class AddImagePage {
       return;
     }
 
-    const fileName = `photo_${new Date().getTime()}.jpeg`; 
+    const fileName = `photo_${new Date().getTime()}.jpeg`;
     const path = fileName;
     try {
-      
-      await Filesystem.writeFile({
-        path,
-        data: this.picture,
-        directory: FilesystemDirectory.Data,
-      });
+
+      // await Filesystem.writeFile({
+      //   path,
+      //   data: this.picture,
+      //   directory: FilesystemDirectory.Data,
+      // });
 
       console.log('Image saved successfully:', path);
     } catch (error) {
