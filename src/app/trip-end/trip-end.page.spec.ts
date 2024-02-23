@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ItemsInsidePage } from './items-inside.page';
+import { TripEndPage } from './trip-end.page';
 
-describe('ItemsInsidePage', () => {
-  let component: ItemsInsidePage;
-  let fixture: ComponentFixture<ItemsInsidePage>;
+describe('TripEndPage', () => {
+  let component: TripEndPage;
+  let fixture: ComponentFixture<TripEndPage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(ItemsInsidePage);
+    fixture = TestBed.createComponent(TripEndPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -15,6 +15,3 @@ describe('ItemsInsidePage', () => {
     expect(component).toBeTruthy();
   });
 });
-
-
-

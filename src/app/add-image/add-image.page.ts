@@ -1,33 +1,34 @@
 import { Component } from '@angular/core';
-import { Plugins} from '@capacitor/core';
-// import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
-
-import { Camera as CapacitorCamera, CameraResultType } from '@capacitor/camera';
-
-
+import { Plugins } from '@capacitor/core';
+import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
+import { CameraResultType, CameraSource } from '@capacitor/camera';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 const { Camera } = Plugins;
-
 @Component({
   selector: 'app-add-image',
   templateUrl: './add-image.page.html',
   styleUrls: ['./add-image.page.scss'],
 })
 export class AddImagePage {
-  picture: any;
+  pictures: string[] = [];
+  abcd: string = 'pooja'; // Initialize my name
+  image: any;
+  alertController: any;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   async takePhoto() {
     try {
-      const image = await Camera['getPhoto']({
+      const capturedPhoto = await Camera['getPhoto']({
         quality: 100,
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
       });
-      if (image && image.dataUrl) {
-        this.picture = image.dataUrl;
 
+      if (capturedPhoto && capturedPhoto.dataUrl) {
+        this.pictures.push(capturedPhoto.dataUrl);
       } else {
         console.warn('No image captured.');
       }
@@ -36,26 +37,48 @@ export class AddImagePage {
     }
   }
 
+  saveImages() {
+    this.http.get(`${environment.api_base_url}/files/pooja/files?access_token=kg`).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.uploadFile();
+      },
+      (err) => {
+        console.log(err);
+        if (err.statusText === 'Not Found') {
+          this.http.post(`${environment.api_base_url}/files/`, { name: this.abcd }).subscribe((res: any) => {
+            console.log(res);
+            this.uploadFile();
+          });
+        }
+      }
+    );
+  }
 
-  async saveImages() {
-    if (!this.picture) {
-      console.error('No image to save.');
-      return;
+  uploadFile() {
+    const formData = new FormData();
+    formData.append('file', this.dataURItoBlob(this.pictures[0]), 'image.jpg');
+
+    this.http.post<any>(`${environment.api_base_url}/files/${this.abcd}/upload/?access_token=kg`, formData).subscribe(
+      (res) => {
+        console.log('Image uploaded successfully:', res);
+        // Handle response
+      },
+      (err) => {
+        console.error('Error uploading image:', err);
+        // Handle error
+      }
+    );
+  }
+
+  dataURItoBlob(dataURI: string): Blob {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
     }
-
-    const fileName = `photo_${new Date().getTime()}.jpeg`;
-    const path = fileName;
-    try {
-
-      // await Filesystem.writeFile({
-      //   path,
-      //   data: this.picture,
-      //   directory: FilesystemDirectory.Data,
-      // });
-
-      console.log('Image saved successfully:', path);
-    } catch (error) {
-      console.error('Error saving image:', error);
-    }
+    return new Blob([ab], { type: mimeString });
   }
 }

@@ -1,0 +1,40 @@
+span {
+    font-size: 13px;
+    font-weight: bolder;
+    color: black;
+}
+
+ion-card {
+    background-color: #F6F7F9;
+    box-shadow: none;
+    border-radius: 10px;
+}
+
+.side-heading {
+    padding-left: 10px;
+    color:#96979B;
+}
+
+ion-item {
+    --background: none;
+    --border-color: #a56946;
+}
+
+ion-button#end-trip-button {
+    --background: #a56946;
+    color: white;
+}
+
+ion-button {
+    color: #a56946;
+    --ripple-color: transparent;
+    padding: 0%;
+    height: 0%;
+    margin: 0%;
+    border: 0%;
+}
+
+ion-fab-button {
+    --color: #FFFFFF;
+    --background: #316974;
+}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+//import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,23 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  username: string="";
+  email: string="";
   password: string="";
+  isLoading: boolean = false;
+  errorMessage: string = "";
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,/* private appComponent: AppComponent*/) {}
 
   login() {
-     // Call the authentication method from AuthService
-     if (this.authService.authenticate(this.username, this.password)) {
-      // If authentication is successful, navigate to the home page
-      this.router.navigateByUrl('/home');
-    } else {
-      // If authentication fails, you can handle it here (e.g., show an error message)
-      console.log('Authentication failed');
-    }
+    this.isLoading = true;
+    this.authService.authenticate(this.email, this.password).subscribe(success => {
+      this.isLoading = false;
+      if (success) {
+        this.router.navigateByUrl('/home');
+      } else {
+        // Authentication failed
+        this.errorMessage = "Email or password is incorrect.";
+      }
+    });
   }
 }

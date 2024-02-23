@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ItemsInsidePageRoutingModule } from './items-inside-routing.module';
+import { TripEndPageRoutingModule } from './trip-end-routing.module';
 
-//import { ItemsInsidePage } from './items-inside.page';
+import { TripEndPage } from './trip-end.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ItemsInsidePageRoutingModule
+    TripEndPageRoutingModule
   ],
-  //declarations: [ItemsInsidePage]
+  declarations: [TripEndPage]
 })
-export class ItemsInsidePageModule {}
+export class TripEndPageModule {}
