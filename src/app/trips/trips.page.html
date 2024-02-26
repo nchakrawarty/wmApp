@@ -46,31 +46,31 @@
   <p class="side-heading" id="trips-for-the-day-heading">Trips for the Day</p>
 
   <div id="trips-for-the-day" [hidden]="false">
-    <ion-card id="trips-for-the-day-card" *ngFor="let vehicleTrack of vehicleTrackList">  
+    <ion-card id="trips-for-the-day-card" *ngFor="let trip of currentTrips">  
       <ion-card-content>
         <ion-item class="ion-no-padding">
           <ion-grid class="ion-no-padding">
             <ion-row style="padding-bottom: 3%;">
               <ion-col>
                 <ion-card-subtitle>Date</ion-card-subtitle>
-                <span>{{ vehicleTrack.date }}</span>
+                <span>{{ trip.date }}</span>
               </ion-col>
               <ion-col></ion-col>
               <ion-col>
                 <ion-card-subtitle>Vehicle Number</ion-card-subtitle>
-                <span>{{ vehicleTrack['vehicle-number'] }}</span>
+                <span>{{ trip.vehicleNum }}</span>
               </ion-col>
             </ion-row>
     
             <ion-row style="padding-bottom: 3%;">
               <ion-col>
                 <ion-card-subtitle>Start Time</ion-card-subtitle>
-                <span>{{ vehicleTrack['start-time'] }}</span>
+                <span>{{ trip.startTime }}</span>
               </ion-col>
               <ion-col></ion-col>
               <ion-col>
                 <ion-card-subtitle>End Time</ion-card-subtitle>
-                <span>{{ vehicleTrack['end-time'] }}</span>
+                <span>{{ trip.endTime }}</span>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -80,27 +80,27 @@
           <ion-row style="padding-bottom: 3%; padding-top: 3%;">
             <ion-col>
               <ion-card-subtitle>Driver Name</ion-card-subtitle>
-              <span>{{ vehicleTrack['driver-name'] }}</span>
+              <span>{{ trip.driverName }}</span>
             </ion-col>
           </ion-row>
 
           <ion-row style="padding-bottom: 3%;">
             <ion-col>
               <ion-card-subtitle>Line Employee 1</ion-card-subtitle>
-              <span>{{ vehicleTrack['line-employee-1'] }}</span>
+              <span>{{ trip.lineEmp1 }}</span>
             </ion-col>
           </ion-row>
 
           <ion-row style="padding-bottom: 3%;">
             <ion-col>
               <ion-card-subtitle>Line Employee 2</ion-card-subtitle>
-              <span>{{ vehicleTrack['line-employee-2'] }}</span>
+              <span>{{ trip.lineEmp2 }}</span>
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col>
-              <ion-button id="end-trip-button" expand="block" (click)="endTrip(vehicleTrack)">End Trip</ion-button>
+              <ion-button id="end-trip-button" expand="block" (click)="endTrip(trip)">End Trip</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -110,7 +110,7 @@
 
   <p class="side-heading" id="past-trips-heading">Past Trips</p>
   <div id="past-trips" [hidden]="false">
-    <ion-card id="past-trips-card" *ngFor="let trip of tripList">  
+    <ion-card id="past-trips-card" *ngFor="let trip of pastTrips">  
       <ion-card-content>
         <ion-item [id]="'past-trips-item' + trip.id" class="ion-no-padding" lines="none">
           <ion-grid class="ion-no-padding">
@@ -122,19 +122,19 @@
               <ion-col></ion-col>
               <ion-col>
                 <ion-card-subtitle>Vehicle Number</ion-card-subtitle>
-                <span>{{ trip['vehicle-number'] }}</span>
+                <span>{{ trip.vehicleNum }}</span>
               </ion-col>
             </ion-row>
     
             <ion-row style="padding-bottom: 3%;">
               <ion-col>
                 <ion-card-subtitle>Start Time</ion-card-subtitle>
-                <span>{{ trip['start-time'] }}</span>
+                <span>{{ trip.startTime }}</span>
               </ion-col>
               <ion-col></ion-col>
               <ion-col>
                 <ion-card-subtitle>End Time</ion-card-subtitle>
-                <span>{{ trip['end-time'] }}</span>
+                <span>{{ trip.endTime }}</span>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -145,21 +145,21 @@
             <ion-row style="padding-bottom: 3%; padding-top: 3%;">
               <ion-col>
                 <ion-card-subtitle>Driver Name</ion-card-subtitle>
-                <span>{{ trip['driver-name'] }}</span>
+                <span>{{ trip.driverName }}</span>
               </ion-col>
             </ion-row>
   
             <ion-row style="padding-bottom: 3%;">
               <ion-col>
                 <ion-card-subtitle>Line Employee 1</ion-card-subtitle>
-                <span>{{ trip['line-employee-1'] }}</span>
+                <span>{{ trip.lineEmp1 }}</span>
               </ion-col>
             </ion-row>
   
             <ion-row>
               <ion-col>
                 <ion-card-subtitle>Line Employee 2</ion-card-subtitle>
-                <span>{{ trip['line-employee-2'] }}</span>
+                <span>{{ trip.lineEmp2 }}</span>
               </ion-col>
             </ion-row>
           </ion-grid>

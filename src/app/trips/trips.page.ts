@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 import { TripService } from '../trip.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-trips',
@@ -10,51 +11,40 @@ import { TripService } from '../trip.service';
 })
 export class TripsPage implements OnInit {
 
-  tripList: any;
-  vehicleTrackList: any;
+  mainList: any;
+  pastTrips: any = [];
+  currentTrips: any = [];
   totalTrips: number = 0;
   tripsToday: number = 0;
+  newCenterId: any = ['65dc23c50b3aeb76fd38dc07'];
 
   constructor(private tripService: TripService, private navCtrl: NavController) {
-    this.getVehicleTracks();
-    this.getVehicleTrackCount();
-    this.getTrips();
-    this.getTripCount();
+    this.getTripList();
   }
 
   ngOnInit() {
   }
 
-  
-
-  getVehicleTracks() {
-    this.tripService.getVehicleTracks().then(data => {
-      this.vehicleTrackList=data;
-    });
-  }
-
-  getVehicleTrackCount() {
-    this.tripService.getVehicleTrackCount().then(data => {
-      let tripsToday: any = data;
-      this.tripsToday = tripsToday.count;
-    });
-  }
-
-  getTrips() {
-    this.tripService.getTrips().then(data => {
-      this.tripList=data;
-    });
-  }
-
-  getTripCount() {
-    this.tripService.getTripCount().then(data => {
-      let totalTrips: any = data;
-      this.totalTrips = totalTrips.count;
-    });
+  getTripList() {
+    this.tripService.getVehicleTracks()
+    .then(response => {
+      this.mainList = response;
+      console.log((this.mainList));
+      for(let val in this.mainList) {
+        if(this.mainList[val].status === "active") {
+          this.currentTrips.push(this.mainList[val]);
+          this.tripsToday++;
+        } else {
+          this.pastTrips.push(this.mainList[val]);
+          this.totalTrips++;
+        }
+      }
+    })
+    .catch(err => console.log(err));
   }
 
   addTrip() {
-    this.navCtrl.navigateForward('trip-start');
+    this.navCtrl.navigateForward('trip-start', {state: this.newCenterId});
   }
 
   endTrip(track: any) {

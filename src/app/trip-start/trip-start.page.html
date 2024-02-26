@@ -35,7 +35,7 @@
 
     <ion-row>
       <span>Driver</span>
-      <ion-input name="driver" type="text" [(ngModel)]="driver"></ion-input>
+      <ion-input name="driver" type="text" [(ngModel)]="driverName"></ion-input>
     </ion-row>
 
     <ion-row>
@@ -50,6 +50,6 @@
   </ion-grid>
 
   <ion-button id="submit-button" expand="block" (click)="startTrip()">Start Trip</ion-button>
-  <ion-toast id="submit-status" trigger="submit-button" message="Start Trip" [duration]="5000"></ion-toast>
+  <ion-toast id="submit-status" trigger="submit-button" message="Start trip!" [duration]="4000"></ion-toast>
 
 </ion-content>

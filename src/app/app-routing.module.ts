@@ -56,7 +56,8 @@ const routes: Routes = [
   {
     path: 'items-inside',
     loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
-  },  {
+  },
+  {
     path: 'trip-start',
     loadChildren: () => import('./trip-start/trip-start.module').then( m => m.TripStartPageModule)
   },

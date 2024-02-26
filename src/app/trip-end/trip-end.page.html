@@ -18,14 +18,14 @@
 
   <ion-row>
     <span>Date</span>
-    <ion-input name="date" type="Date" [readonly]="true" value="{{ vehicleTrack['date'] }}"></ion-input>
+    <ion-input name="date" type="Date" [readonly]="true" value="{{ trip.date }}"></ion-input>
   </ion-row>
 
   <ion-grid>
     <ion-row>
       <ion-col>
         <span>Start Time</span>
-        <ion-input name="start-time" type="Time" [readonly]="true" value="{{ vehicleTrack['start-time'] }}"></ion-input>
+        <ion-input name="start-time" type="Time" [readonly]="true" value="{{ trip.startTime }}"></ion-input>
       </ion-col>
       <ion-col>
         <span>End Time</span>
@@ -35,27 +35,28 @@
 
     <ion-row>
       <span>Vehicle Number</span>
-      <ion-input name="vehicle-number" type="text" [readonly]="true" value="{{ vehicleTrack['vehicle-number'] }}"></ion-input>
+      <ion-input name="vehicle-number" type="text" [readonly]="true" value="{{ trip.vehicleNum }}"></ion-input>
     </ion-row>
 
     <ion-row>
       <span>Driver</span>
-      <ion-input name="driver" type="text" [readonly]="true" value="{{ vehicleTrack['driver-name'] }}"></ion-input>
+      <ion-input name="driver" type="text" [readonly]="true" value="{{ trip.driverName }}"></ion-input>
     </ion-row>
 
     <ion-row>
       <span>Line Employee 1</span>
-      <ion-input name="line-employee-1" type="text" [readonly]="true" value="{{ vehicleTrack['line-employee-1'] }}"></ion-input>
+      <ion-input name="line-employee-1" type="text" [readonly]="true" value="{{ trip.lineEmp1 }}"></ion-input>
     </ion-row>
 
     <ion-row>
       <span>Line Employee 2</span>
-      <ion-input name="line-employee-2" type="text" [readonly]="true" value="{{ vehicleTrack['line-employee-2'] }}"></ion-input>
+      <ion-input name="line-employee-2" type="text" [readonly]="true" value="{{ trip.lineEmp2 }}"></ion-input>
     </ion-row>
   </ion-grid>
 
   <ion-button id="submit-button" expand="block">End Trip</ion-button>
   <ion-alert
+    id="submit-alert"
     trigger="submit-button"
     header="End Trip"
     subHeader="Are you sure you want to end trip?"
@@ -63,6 +64,6 @@
     [buttons]="alertButtons"
     (didDismiss)="endTrip($event)">
   </ion-alert>
-  <ion-toast id="submit-status" trigger="submit-button" message="Start Trip" [duration]="5000"></ion-toast>
+  <ion-toast id="submit-status" trigger="submit-alert" message="End trip!" [duration]="4000"></ion-toast>
 
 </ion-content>
