@@ -8,26 +8,13 @@ import { HomePage } from './home/home.page';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
   { path: 'login', component: LoginPage },
- // { path: 'home', component: HomePage, canActivate: [AuthGuard] },
- { path: '', redirectTo: 'home', pathMatch: 'full' },
-  
+  //{ path: 'home', component: HomePage, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-
-  {
-     path: '',
-     redirectTo: 'folder/Inbox',
-     pathMatch: 'full'
-  },
-  
-  // {
-  //   path: '',
-  //   redirectTo: 'folder/Inbox',
-  //   pathMatch: 'full'
-  // },
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -35,8 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'trips',
-    loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule)
   },
   {
     path: 'qrscan',
@@ -70,7 +56,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-   // canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'trip-start',
