@@ -38,19 +38,10 @@ export class AddImagePage {
   }
 
   saveImages() {
-    this.http.get(`${environment.api_base_url}/files/pooja/files?access_token=kg`).subscribe(
+    this.http.get(`${environment.api_base_url}/files/`).subscribe(
       (res: any) => {
         console.log(res);
         this.uploadFile();
-      },
-      (err) => {
-        console.log(err);
-        if (err.statusText === 'Not Found') {
-          this.http.post(`${environment.api_base_url}/files/`, { name: this.abcd }).subscribe((res: any) => {
-            console.log(res);
-            this.uploadFile();
-          });
-        }
       }
     );
   }
@@ -59,14 +50,14 @@ export class AddImagePage {
     const formData = new FormData();
     formData.append('file', this.dataURItoBlob(this.pictures[0]), 'image.jpg');
 
-    this.http.post<any>(`${environment.api_base_url}/files/${this.abcd}/upload/?access_token=kg`, formData).subscribe(
+    this.http.post<any>(`${environment.api_base_url}/files/${this.abcd}/upload/`, formData).subscribe(
       (res) => {
         console.log('Image uploaded successfully:', res);
         // Handle response
       },
       (err) => {
         console.error('Error uploading image:', err);
-        // Handle error 
+        // Handle error
       }
     );
   }

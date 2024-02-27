@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ItemsInsidePage } from './items-inside.page';
+import { NonrecycleAddPage } from './nonrecycle-add.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ItemsInsidePage
+    component: NonrecycleAddPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ItemsInsidePageRoutingModule {}
+export class NonrecycleAddPageRoutingModule {}

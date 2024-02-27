@@ -15,25 +15,25 @@ export class TripEndPage implements OnInit {
       text: 'Cancel',
       role: 'cancel',
       handler: () => {
-        console.log('Alert canceled');
+        console.log('Failed to submit details!');
       },
     },
     {
       text: 'Yes',
       role: 'confirm',
       handler: () => {
-        console.log('Alert confirmed');
+        console.log('Trip ended!');
       },
     },
   ];
 
-  vehicleTrack: any;
+  trip: any;
   time: any = '';
 
   constructor( private location: Location, private tripService: TripService) { }
 
   ngOnInit() {
-    this.vehicleTrack = this.location.getState();
+    this.trip = this.location.getState();
     let d = new Date()
     this.time = String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0');
   }
@@ -45,20 +45,20 @@ export class TripEndPage implements OnInit {
   endTrip(ev: any) {
     let toast = document.getElementById('submit-status');
     if(ev.detail.role == 'confirm') {
-      this.tripService.deleteVehicleTrack(this.vehicleTrack.id);
-      let trip = {
-        'date': this.vehicleTrack['date'],
-        'vehicle-number': this.vehicleTrack['vehicle-number'],
-        'start-time': this.vehicleTrack['start-time'],
-        'end-time': this.time,
-        'driver-name': this.vehicleTrack['driver-name'],
-        'line-employee-1': this.vehicleTrack['line-employee-1'],
-        'line-employee-2': this.vehicleTrack['line-employee-2']
+      this.tripService.deleteVehicleTrack(this.trip.id);
+      let updateTrip = {
+        'date': this.trip.date,
+        'vehicleNum': this.trip.vehicleNum,
+        'startTime': this.trip.startTime,
+        'endTime': this.time,
+        'status': 'ended',
+        'driverName': this.trip.driverName,
+        'lineEmp1': this.trip.lineEmp1,
+        'lineEmp2': this.trip.lineEmp2,
+        'newCenterId': this.trip.newCenterId
       }
-      console.log(trip);
-      this.tripService.addTrip(trip).then(data => {
-        console.log(data);
-      });
+      console.log(updateTrip);
+      this.tripService.updateVehicleTrack(updateTrip).then(data => { console.log(data); });
       toast?.setAttribute("message","Trip ended!");
     } else {
       toast?.setAttribute("message","Failed to submit details!");

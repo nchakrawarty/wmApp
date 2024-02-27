@@ -15,6 +15,7 @@ export class AppComponent {
     { title: 'Factory', url: '/folder/factory', icon: 'business' },
     { title: 'Logout', action: 'logout' , icon: 'power' }
   ];
+
   public username = "";
   public email = "";
   public center = "";
@@ -26,6 +27,9 @@ export class AppComponent {
       this.email = userData.email;
     }
   }
+
+  
+
 
   public switchLanguage() {
     if(this.language == "en") {
@@ -50,9 +54,12 @@ export class AppComponent {
     
   }
 
+
   handleNavigation(action: string) {
     if (action === 'logout') {
         this.authService.logout();
       }
     }
   }
+
+

@@ -5,7 +5,7 @@ import { NoauthGuard } from './noauth.guard';
 import { LoginPage } from './login/login.page';
 import { HomePage } from './home/home.page';
 import { EnterWastePage } from './enter-waste/enter-waste.page';
-//import { ItemsInsidePage } from './items-inside/items-inside.page';
+import { ItemsInsidePage } from './items-inside/items-inside.page';
 
 /*const routes: Routes = [
   { path: '', redirectTo: 'enter-waste', pathMatch: 'full' }, // Set login page as default route
