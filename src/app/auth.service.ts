@@ -13,7 +13,14 @@ export class AuthService {
   
   constructor(private http: HttpClient, private router: Router) {
     // Check if the user is already logged in (e.g., from a previous session)
-    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const Value=localStorage.getItem('isLoggedIn')
+    if (Value !== null){
+      if(JSON.parse(Value)){
+        this.router.navigateByUrl('/home');
+      }
+    }else{
+      localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn));
+    }
   }
 
   // Perform basic authentication logic here
@@ -23,8 +30,9 @@ authenticate(email: string, password: string): Observable<any> {
     tap(response => {
       // Check if a user with the provided email exists
       if (response && response.id) {
-        localStorage.setItem('accessToken', response.id);
         this.isLoggedIn = true;
+        localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn))
+        //localStorage.setItem('accessToken', response.id);
 
         // getUserData 
         return this.http.get(`${Urls.USERS}/${response.userId}?access_token=${response.id}`).pipe(
@@ -40,6 +48,7 @@ authenticate(email: string, password: string): Observable<any> {
       } else {
         // auth failed or no accesstoken
         this.isLoggedIn = false;
+        localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn));
         return of(false);
       }
     }),
@@ -47,6 +56,7 @@ authenticate(email: string, password: string): Observable<any> {
       // Handle any errors 
       console.error('Authentication error:', error);
       this.isLoggedIn = false;
+      localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn));
       return of(false); // Return false to indicate authentication failure
     })
   );
@@ -55,16 +65,20 @@ authenticate(email: string, password: string): Observable<any> {
 
   // Check if the user is logged in
   isAuthenticated(): boolean {
+    const Value=localStorage.getItem('isLoggedIn');
+    if (Value !== null){
+      this.isLoggedIn=JSON.parse(Value);
+    }
     return this.isLoggedIn;
   }
 
   // Log out the user
   logout(): Observable<any> {
-    const accessToken = localStorage.getItem('accessToken')
+    //const accessToken = localStorage.getItem('accessToken')
     // Make a request to the logout endpoint
-    console.log(accessToken)
-    return this.http.post<any>(`${Urls.LOGOUT}?access_token=${accessToken}`,{}).pipe(
-      tap(() => {
+    console.log('logout initiated')
+    /*return this.http.post<any>(`${Urls.LOGOUT}?access_token=${accessToken}`,{}).pipe(
+      tap(() => {*/
         // On successful logout, reset isLoggedIn and clear local storage
         this.isLoggedIn = false;
         console.log("logged out")
@@ -72,11 +86,12 @@ authenticate(email: string, password: string): Observable<any> {
         localStorage.removeItem('userData');
         // Redirect to login page after logout
         this.router.navigateByUrl('/login');
-      }),
-      catchError(error => {
+        return of(true);
+      }//),
+      /*catchError(error => {
       console.error('Logout error:', error);
       return of(false); // Return false to indicate logout failure
       })
     );
-  }
+  }*/
 }
