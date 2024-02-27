@@ -1,0 +1,52 @@
+
+<!-- <ion-header> 
+    <ion-toolbar color="orange">
+        <ion-title></ion-title>
+         <ion-buttons slot="start"> 
+             <ion-back-button defaultHref="home"></ion-back-button>
+         </ion-buttons> 
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <p>Recycle</p>
+    <br>
+    <ion-item lines="none">
+      <ion-label position="stacked">Waste</ion-label>
+      <ion-select [(ngModel)]="selectedWaste" placeholder="Select Waste">
+        <ion-select-option value="M.L.P">M.L.P</ion-select-option>
+        <ion-select-option value="Greased Cloth">Greased Cloth</ion-select-option>
+        <ion-select-option value="Thermocol">Thermocol</ion-select-option>
+        <ion-select-option value="Tablet Cover">Tablet Cover</ion-select-option>
+        <ion-select-option value="Ceramic">Ceramic</ion-select-option>
+        <ion-select-option value="Cloth Items">Cloth Items</ion-select-option>
+        <ion-select-option value="Leather Items">Leather Items</ion-select-option>
+        <ion-select-option value="Ruber Items">Ruber Items</ion-select-option>
+        <ion-select-option value="Footwear">Footwear</ion-select-option>
+        <ion-select-option value="Sanitary Items">Sanitary Items</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item lines="none">
+      <ion-label position="stacked">Kilograms</ion-label>
+      <ion-input type="number" [(ngModel)]="amount" placeholder="Enter Kilograms"></ion-input>
+    </ion-item>
+  
+    <ion-button color="orange" expand="full" (click)="addWaste()">Add</ion-button>
+    <h6>List of items to be added</h6>
+    <ion-card *ngIf="wasteList.length > 0">
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let item of wasteList">
+            <ion-label>{{ item.name }} - {{ item.amount }} kg</ion-label>
+            <ion-button  color="orange" slot="end" (click)="removeWaste(item.newCenterid)">Delete</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-button color="orange" expand="block" (click)="saveWaste()">Save</ion-button>
+  </ion-footer> -->
+  

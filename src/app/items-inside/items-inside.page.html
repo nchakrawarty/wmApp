@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      JSON Data Viewer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Select Option:</ion-label>
+    <ion-select [(ngModel)]="selectedOption" (ionChange)="displayDetails()">
+      <ion-select-option value="KRT">KRT</ion-select-option>
+      <ion-select-option value="Paper">Paper</ion-select-option>
+      <ion-select-option value="White Cover">White Cover</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-card *ngFor="let record of selectedRecords">
+    <ion-card-content>
+      <ion-card-subtitle>
+        <strong>Date:</strong> {{record.date}}
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="record.name !== ''">
+        <strong>Amount:</strong> {{record.amount}}
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="record.name !== ''">
+        <strong>New Center ID:</strong> {{record.newCenterId}}
+      </ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
