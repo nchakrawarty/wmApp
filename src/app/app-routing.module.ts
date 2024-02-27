@@ -77,10 +77,10 @@ const routes: Routes = [
     path: 'trip-end',
     loadChildren: () => import('./trip-end/trip-end.module').then( m => m.TripEndPageModule)
   },
-  {
-    path: 'nonrecycle-add',
-    loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule)
-  },
+//{
+    //path: 'nonrecycle-add',
+    //loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule)
+  //},
   {
     path: 'items-inside',
     loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
