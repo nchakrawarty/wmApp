@@ -3,14 +3,30 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { LoginPage } from './login/login.page';
 import { HomePage } from './home/home.page';
-//import { ItemsInsidePage } from './items-inside/items-inside.page';
+import { EnterWastePage } from './enter-waste/enter-waste.page';
+import { ItemsInsidePage } from './items-inside/items-inside.page';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
   { path: 'login', component: LoginPage },
+<<<<<<< HEAD
   //{ path: 'home', component: HomePage, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
+=======
+{ path: '', redirectTo: 'home',pathMatch: 'full'},
+
+
+
+
+
+  {
+     path: '',
+     redirectTo: 'folder/Inbox',
+     pathMatch: 'full'
+  },
+  
+>>>>>>> 24c33fca54d7801235c5c7f81d5d9c8e6097d29e
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule),
@@ -22,7 +38,12 @@ const routes: Routes = [
   },
   {
     path: 'trips',
+<<<<<<< HEAD
     loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule)
+=======
+    loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule),
+    //canActivate: [AuthGuard]
+>>>>>>> 24c33fca54d7801235c5c7f81d5d9c8e6097d29e
   },
   {
     path: 'qrscan',
@@ -65,7 +86,17 @@ const routes: Routes = [
   {
     path: 'trip-end',
     loadChildren: () => import('./trip-end/trip-end.module').then( m => m.TripEndPageModule)
+  },
+//{
+    //path: 'nonrecycle-add',
+    //loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule)
+  //},
+  {
+    path: 'items-inside',
+    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
   }
+
+
 ];
 
 @NgModule({
@@ -75,4 +106,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-

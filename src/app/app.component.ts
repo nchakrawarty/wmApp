@@ -7,7 +7,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public language = "en";
   public appPages = [
+<<<<<<< HEAD
     { title: 'Home', url: 'home', icon: 'home' },
+=======
+    { title: 'Home', url: '/home', icon: 'home' },
+>>>>>>> 24c33fca54d7801235c5c7f81d5d9c8e6097d29e
     { title: 'Employees', url: '/folder/employees', icon: 'list' },
     { title: 'Recyclers', url: '/folder/recyclers', icon: 'repeat' },
     { title: 'Factory', url: '/folder/factory', icon: 'business' },
