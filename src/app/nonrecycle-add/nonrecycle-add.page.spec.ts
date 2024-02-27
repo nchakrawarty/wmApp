@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ItemsInsidePage } from './items-inside.page';
+import { NonrecycleAddPage } from './nonrecycle-add.page';
 
-describe('ItemsInsidePage', () => {
-  let component: ItemsInsidePage;
-  let fixture: ComponentFixture<ItemsInsidePage>;
+describe('NonrecycleAddPage', () => {
+  let component: NonrecycleAddPage;
+  let fixture: ComponentFixture<NonrecycleAddPage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(ItemsInsidePage);
+    fixture = TestBed.createComponent(NonrecycleAddPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
