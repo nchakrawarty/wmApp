@@ -57,7 +57,7 @@ export class AddImagePage {
       },
       (err) => {
         console.error('Error uploading image:', err);
-        // Handle error 
+        // Handle error
       }
     );
   }

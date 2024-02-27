@@ -9,7 +9,7 @@ import { ItemsInsidePage } from './items-inside/items-inside.page';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
   { path: 'login', component: LoginPage },
-{path: '', redirectTo: 'home',pathMatch: 'full'},
+{ path: '', redirectTo: 'home',pathMatch: 'full'},
 
 
 
