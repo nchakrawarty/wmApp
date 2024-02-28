@@ -39,7 +39,7 @@ export class AppComponent {
         { title: 'ಉದ್ಯೋಗಿಗಳು', url: '/folder/employees', icon: 'list' },
         { title: 'ಮರುಬಳಕೆಗಾರರು', url: '/folder/recyclers', icon: 'repeat' },
         { title: 'ಕಾರ್ಖಾನೆ', url: '/folder/factory', icon: 'business' },
-        { title: 'ಲಾಗ್ ಔಟ್', url: '/folder/logout', icon: 'power' }
+        { title: 'ಲಾಗ್ ಔಟ್', action: 'logout' , icon: 'power' }
       ];
     } else {
       this.language = "en";
@@ -48,7 +48,7 @@ export class AppComponent {
         { title: 'Employees', url: '/folder/employees', icon: 'list' },
         { title: 'Recyclers', url: '/folder/recyclers', icon: 'repeat' },
         { title: 'Factory', url: '/folder/factory', icon: 'business' },
-        { title: 'Logout', url: '/folder/logout', icon: 'power' }
+        { title: 'Logout', action: 'logout' , icon: 'power' }
       ];
     }
     
