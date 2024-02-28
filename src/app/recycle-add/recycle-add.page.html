@@ -1,15 +1,20 @@
 <ion-header>
   <ion-toolbar color="orange">
-      <ion-title></ion-title>
-       <ion-buttons slot="start"> 
-           <ion-back-button defaultHref="home"></ion-back-button>
-       </ion-buttons> 
+    <ion-title>Recycle</ion-title>
+    <ion-buttons slot="start"> 
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>Recycle</p>
-  <br>
+  <ion-item lines="none">
+    <ion-label position="stacked">Center</ion-label>
+    <ion-select [(ngModel)]="selectedWaste" placeholder="Select Waste" (ionChange)="onCenterChange()">
+      <ion-select-option *ngFor="let center of centers" [value]="center.centerName">{{ center.centerName }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
   <ion-item lines="none">
     <ion-label position="stacked">Waste</ion-label>
     <ion-select [(ngModel)]="selectedWaste" placeholder="Select Waste">

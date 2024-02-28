@@ -87,6 +87,16 @@ const routes: Routes = [
     loadChildren: () => import('./trip-end/trip-end.module').then( m => m.TripEndPageModule),
     canActivate: [AuthGuard]
   },
+{
+    path: 'nonrecycle-add',
+    loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule)
+  },
+  {
+    path: 'items-inside',
+    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
+  }
+
+
   //{
       //path: 'nonrecycle-add',
       //loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule)
