@@ -9,21 +9,22 @@ import { Router } from '@angular/router';
 export class HomePage {
   totalWaste: number = 0;
   collectionOfTheDay: number = 0;
+  collectionDate: string = '28/02/2024'; 
+  centerName: string = 'defaultcenter';
   isRecyclableSelected: boolean = true;
 
-  constructor(private router: Router) {
-    
-    // You can update the values of totalWaste and collectionOfTheDay dynamically here
-    // For example:
-    this.totalWaste = 100;
-    this.collectionOfTheDay = 50;
-  }
+  recyclableItems: string[] = ['Recyclable Item 1', 'Recyclable Item 2', 'Recyclable Item 3'];
+  nonRecyclableItems: string[] = ['Non-Recyclable Item 1', 'Non-Recyclable Item 2', 'Non-Recyclable Item 3'];
 
-  switchToRecyclable() {
+  constructor(private router: Router) {}
+
+  showRecyclableItems() {
+    console.log('recyclable')
     this.isRecyclableSelected = true;
   }
 
-  switchToNonRecyclable() {
+  showNonRecyclableItems() {
+    console.log('nonrecyclable')
     this.isRecyclableSelected = false;
   }
 
