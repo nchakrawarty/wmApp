@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 interface Record {
   name: string;
@@ -18,12 +19,16 @@ export class ItemsInsidePage {
   selectedOption!: string;
   jsonData!: Record[];
   selectedRecords!: Record[];
-  currentTab: string = 'details'; // Default tab
+  totalAmount: number = 0; 
+  totalKilograms: number = 0; 
+  currentTab: string = 'details'; 
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<Record[]>('assets/items-inside.json').subscribe(data => {
+    const apiUrl = `${environment.api_base_url}/newWasteCollecteds`;
+
+    this.http.get<Record[]>(apiUrl).subscribe(data => {
       this.jsonData = data;
       this.selectedOption = 'KRT'; // Default selection
       this.displayDetails();
@@ -32,6 +37,12 @@ export class ItemsInsidePage {
 
   displayDetails() {
     this.selectedRecords = this.jsonData.filter(record => record.name === this.selectedOption);
+    this.calculateTotals();
+  }
+
+  calculateTotals() {
+    this.totalAmount = this.selectedRecords.reduce((total, record) => total + record.amount, 0);
+    this.totalKilograms = this.selectedRecords.length; 
   }
 
   switchTab(tab: string) {

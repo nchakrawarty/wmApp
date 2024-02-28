@@ -4,6 +4,9 @@ import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
 import { CameraResultType, CameraSource } from '@capacitor/camera';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import {defineCustomElements} from '@ionic/pwa-elements/loader'
+
+defineCustomElements(window);
 
 const { Camera } = Plugins;
 @Component({
@@ -13,7 +16,7 @@ const { Camera } = Plugins;
 })
 export class AddImagePage {
   pictures: string[] = [];
-  abcd: string = 'pooja'; // Initialize my name
+  abcd: string = 'pooja'; // Initialize my name for eg
   image: any;
   alertController: any;
 
@@ -38,10 +41,19 @@ export class AddImagePage {
   }
 
   saveImages() {
-    this.http.get(`${environment.api_base_url}/files/`).subscribe(
+    this.http.get(`${environment.api_base_url}/files/pooja/files`).subscribe(
       (res: any) => {
         console.log(res);
         this.uploadFile();
+      },
+      (err) => {
+        console.log(err);
+        if (err.statusText === 'Not Found') {
+          this.http.post(`${environment.api_base_url}/files/`, { name: this.abcd }).subscribe((res: any) => {
+            console.log(res);
+            this.uploadFile();
+          });
+        }
       }
     );
   }
@@ -53,11 +65,11 @@ export class AddImagePage {
     this.http.post<any>(`${environment.api_base_url}/files/${this.abcd}/upload/`, formData).subscribe(
       (res) => {
         console.log('Image uploaded successfully:', res);
-        // Handle response
+        
       },
       (err) => {
         console.error('Error uploading image:', err);
-        // Handle error
+        
       }
     );
   }
