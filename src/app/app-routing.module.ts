@@ -3,20 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { NoauthGuard } from './noauth.guard';
 
-/*const routes: Routes = [
-  { path: '', redirectTo: 'enter-waste', pathMatch: 'full' }, // Set login page as default route
-  { path: 'enter-waste', component: EnterWastePage  },
- // { path: 'home', component: HomePage, canActivate: [AuthGuard] },
- { path: '', redirectTo: 'home', pathMatch: 'full' },
-*/
-
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
-   /*{
-     path: '',
-     redirectTo: 'folder/Inbox',
-     pathMatch: 'full'
-   },*/
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
