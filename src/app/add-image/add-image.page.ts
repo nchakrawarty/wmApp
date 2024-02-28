@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
+// import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
 import { CameraResultType, CameraSource } from '@capacitor/camera';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
