@@ -7,20 +7,8 @@ import { HomePage } from './home/home.page';
 import { EnterWastePage } from './enter-waste/enter-waste.page';
 import { ItemsInsidePage } from './items-inside/items-inside.page';
 
-/*const routes: Routes = [
-  { path: '', redirectTo: 'enter-waste', pathMatch: 'full' }, // Set login page as default route
-  { path: 'enter-waste', component: EnterWastePage  },
- // { path: 'home', component: HomePage, canActivate: [AuthGuard] },
- { path: '', redirectTo: 'home', pathMatch: 'full' },
-*/
-
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
-  /* {
-     path: '',
-     redirectTo: 'folder/Inbox',
-     pathMatch: 'full'
-   },*/
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
@@ -66,7 +54,6 @@ const routes: Routes = [
     loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule),
     canActivate: [AuthGuard]
   },
-
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule),
@@ -87,25 +74,18 @@ const routes: Routes = [
     loadChildren: () => import('./trip-end/trip-end.module').then( m => m.TripEndPageModule),
     canActivate: [AuthGuard]
   },
-{
+  {
     path: 'nonrecycle-add',
     loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule)
   },
   {
     path: 'items-inside',
     loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
-  }
-
-
-  //{
-      //path: 'nonrecycle-add',
-      //loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule)
-    //},
-    {
-      path: 'items-inside',
-      loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
-    }
-    
+  },
+  {
+    path: 'items-inside',
+    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
+  } 
 ];
 
 @NgModule({
@@ -114,4 +94,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {}
