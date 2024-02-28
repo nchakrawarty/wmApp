@@ -50,7 +50,6 @@ const routes: Routes = [
     loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule),
     canActivate: [AuthGuard]
   },
-
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule),
@@ -71,7 +70,7 @@ const routes: Routes = [
     loadChildren: () => import('./trip-end/trip-end.module').then( m => m.TripEndPageModule),
     canActivate: [AuthGuard]
   },
-{
+  {
     path: 'nonrecycle-add',
     loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule),
     canActivate: [AuthGuard]
@@ -89,4 +88,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {}
