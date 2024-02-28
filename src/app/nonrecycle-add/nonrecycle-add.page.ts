@@ -4,8 +4,8 @@ import { WasteService } from '../waste.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-interface WasteItem2 {
-  newCenterid: number;
+interface WasteItem1 {
+  newCenterid: number; 
   name: string;
   amount: number;
   date: string; 
@@ -13,21 +13,23 @@ interface WasteItem2 {
 
 interface Center {
   centerName: string;
-  id: number;
+  id: number; 
 }
 
 @Component({
-  selector: 'app-recycle-add',
-  templateUrl: './recycle-add.page.html',
-  styleUrls: ['./recycle-add.page.scss'],
+  selector: 'app-nonrecycle-add',
+  templateUrl: './nonrecycle-add.page.html',
+  styleUrls: ['./nonrecycle-add.page.scss'],
 })
-export class RecycleAddPage {
+export class NonrecycleAddPage {
+  selectedCenter: string = "";
+  selectedCenterId: number = 0; 
   selectedWaste: string = "";
   amount: number = 0;
-  wasteList: WasteItem2[] = [];
-  selectedCenterId: number = 0; 
-  centers: Center[] = [];
+  wasteList: WasteItem1[] = [];
+  imageList: string[] = [];
   date: string; 
+  centers: Center[] = [];
 
   constructor(
     private router: Router, 
@@ -48,9 +50,9 @@ export class RecycleAddPage {
   }
 
   onCenterChange() {
-    const selectedCenter = this.centers.find(center => center.centerName === this.selectedWaste);
+    const selectedCenter = this.centers.find(center => center.centerName === this.selectedCenter);
     if (selectedCenter) {
-      this.selectedCenterId = selectedCenter.id;
+      this.selectedCenterId = selectedCenter.id; 
     }
   }
 
@@ -63,7 +65,7 @@ export class RecycleAddPage {
     }
   }
 
-  removeWaste(id: number) {
+  removeWaste(id: number) { 
     this.wasteList = this.wasteList.filter(item => item.newCenterid !== id);
   }
 

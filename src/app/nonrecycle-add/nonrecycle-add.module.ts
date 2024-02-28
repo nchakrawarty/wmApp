@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddImagePageRoutingModule } from './add-image-routing.module';
+import { NonrecycleAddPageRoutingModule } from './nonrecycle-add-routing.module';
 
-import { AddImagePage } from './add-image.page';
+import { NonrecycleAddPage } from './nonrecycle-add.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddImagePageRoutingModule
+    NonrecycleAddPageRoutingModule
   ],
-  declarations: [AddImagePage]
+  declarations: [NonrecycleAddPage]
 })
-export class AddImagePageModule {}
+export class NonrecycleAddPageModule {}

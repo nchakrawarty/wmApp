@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { environment } from '../environments/environment.prod';
-import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Urls } from './constants/urls';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,46 +11,53 @@ import { map, catchError } from 'rxjs/operators';
 export class AuthService {
   private isLoggedIn: boolean = false;
   
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     // Check if the user is already logged in (e.g., from a previous session)
-    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const Value=localStorage.getItem('isLoggedIn')
+    if (Value !== null){
+      if(JSON.parse(Value)){
+        this.router.navigateByUrl('/home');
+      }
+    }else{
+      localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn));
+    }
   }
 
   // Perform basic authentication logic here
-  authenticate(email: string, password: string): Observable<any> {
-     // Make an HTTP post request to the backend API endpoint to retrieve accesstoken
-    return this.http.post<any>(`${environment.apiUrl}/Users/login`,{ email, password }).pipe(
-    map(response => {
+authenticate(email: string, password: string): Observable<any> {
+  // Make an HTTP post request to the backend API endpoint to retrieve accesstoken
+  return this.http.post<any>(`${Urls.LOGIN}`, { email, password, returnSecureToken: true }).pipe(
+    tap(response => {
       // Check if a user with the provided email exists
       if (response && response.id) {
-        localStorage.setItem('accessToken', response.id);
         this.isLoggedIn = true;
+        localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn))
+        //localStorage.setItem('accessToken', response.id);
 
-        return this.getUserData(response.id,response.userId).pipe(
-          map(userData =>{
+        // getUserData 
+        return this.http.get(`${Urls.USERS}/${response.userId}?access_token=${response.id}`).pipe(
+          tap(userData => {
             localStorage.setItem('userData', JSON.stringify(userData));
-            return true;
+            console.log(userData);
+          }),
+          catchError(error => {
+            console.error('Failed to fetch user data:', error);
+            return of(false); // Return false to indicate authentication failure
           })
-        );
-        } else {
-          // auth failed or no accesstoken
-          return false;
-        }
+        ).subscribe();
+      } else {
+        // auth failed or no accesstoken
+        this.isLoggedIn = false;
+        localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn));
+        return of(false);
+      }
     }),
     catchError((error) => {
       // Handle any errors 
       console.error('Authentication error:', error);
-      return [false]; // Return false to indicate authentication failure
-    })
-  );
-}
-
-// Example: Get user profile data
-private getUserData(accessToken: string,userId: string): Observable<any> {
-  return this.http.get<any>(`${environment.apiUrl}/Users/${userId}?accessToken=${accessToken}`).pipe(
-    catchError(error => {
-      console.error('Failed to fetch user data:', error);
-      throw error;
+      this.isLoggedIn = false;
+      localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn));
+      return of(false); // Return false to indicate authentication failure
     })
   );
 }
@@ -57,14 +65,33 @@ private getUserData(accessToken: string,userId: string): Observable<any> {
 
   // Check if the user is logged in
   isAuthenticated(): boolean {
+    const Value=localStorage.getItem('isLoggedIn');
+    if (Value !== null){
+      this.isLoggedIn=JSON.parse(Value);
+    }
     return this.isLoggedIn;
   }
 
   // Log out the user
-  logout(): void {
-    this.isLoggedIn = false;
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('userData')
-  }
+  logout(): Observable<any> {
+    //const accessToken = localStorage.getItem('accessToken')
+    // Make a request to the logout endpoint
+    console.log('logout initiated')
+    /*return this.http.post<any>(`${Urls.LOGOUT}?access_token=${accessToken}`,{}).pipe(
+      tap(() => {*/
+        // On successful logout, reset isLoggedIn and clear local storage
+        this.isLoggedIn = false;
+        console.log("logged out")
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userData');
+        // Redirect to login page after logout
+        this.router.navigateByUrl('/login');
+        return of(true);
+      }//),
+      /*catchError(error => {
+      console.error('Logout error:', error);
+      return of(false); // Return false to indicate logout failure
+      })
+    );
+  }*/
 }

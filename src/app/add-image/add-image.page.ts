@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
+// import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
 import { CameraResultType, CameraSource } from '@capacitor/camera';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import {defineCustomElements} from '@ionic/pwa-elements/loader'
+
+defineCustomElements(window);
 
 const { Camera } = Plugins;
-
 @Component({
   selector: 'app-add-image',
   templateUrl: './add-image.page.html',
@@ -12,8 +16,11 @@ const { Camera } = Plugins;
 })
 export class AddImagePage {
   pictures: string[] = [];
+  abcd: string = 'pooja'; // Initialize my name for eg
+  image: any;
+  alertController: any;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   async takePhoto() {
     try {
@@ -21,7 +28,6 @@ export class AddImagePage {
         quality: 100,
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
-        source: CameraSource.Camera,
       });
 
       if (capturedPhoto && capturedPhoto.dataUrl) {
@@ -34,26 +40,48 @@ export class AddImagePage {
     }
   }
 
-  async saveImages() {
-    if (this.pictures.length === 0) {
-      console.error('No images to save.');
-      return;
-    }
-
-    try {
-      for (let i = 0; i < this.pictures.length; i++) {
-        const fileName = `temp_photo_${new Date().getTime()}_${i}.jpeg`;
-        // Use forward slashes and escape backslashes in the file path
-        const path = `/src/assets/${fileName}`; 
-        await Filesystem.writeFile({
-          path,
-          data: this.pictures[i],
-          directory: FilesystemDirectory.Data,
-        });
-        console.log('Image saved successfully:', path);
+  saveImages() {
+    this.http.get(`${environment.api_base_url}/files/pooja/files`).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.uploadFile();
+      },
+      (err) => {
+        console.log(err);
+        if (err.statusText === 'Not Found') {
+          this.http.post(`${environment.api_base_url}/files/`, { name: this.abcd }).subscribe((res: any) => {
+            console.log(res);
+            this.uploadFile();
+          });
+        }
       }
-    } catch (error) {
-      console.error('Error saving images:', error);
+    );
+  }
+
+  uploadFile() {
+    const formData = new FormData();
+    formData.append('file', this.dataURItoBlob(this.pictures[0]), 'image.jpg');
+
+    this.http.post<any>(`${environment.api_base_url}/files/${this.abcd}/upload/`, formData).subscribe(
+      (res) => {
+        console.log('Image uploaded successfully:', res);
+        
+      },
+      (err) => {
+        console.error('Error uploading image:', err);
+        
+      }
+    );
+  }
+
+  dataURItoBlob(dataURI: string): Blob {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
     }
+    return new Blob([ab], { type: mimeString });
   }
 }
