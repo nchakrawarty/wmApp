@@ -42,11 +42,17 @@ ion-label {
   padding-right: 10px;
 }
 
-ion-button {
+ion-button, ion-fab-button {
   --background: #A56946;
   border-radius: 10px;
 }
 
 ion-card {
   border-radius: 10px;
+}
+
+qr-scan-button {
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
 }
