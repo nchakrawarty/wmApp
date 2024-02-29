@@ -48,7 +48,7 @@ const routes: Routes = [
   {
     path: 'add-image',
     loadChildren: () => import('./add-image/add-image.module').then( m => m.AddImagePageModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'recycle-add',

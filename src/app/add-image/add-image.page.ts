@@ -21,7 +21,6 @@ export class AddImagePage {
   alertController: any;
 
   constructor(private http: HttpClient) {}
-
   async takePhoto() {
     try {
       const capturedPhoto = await Camera['getPhoto']({
@@ -41,7 +40,7 @@ export class AddImagePage {
   }
 
   saveImages() {
-    this.http.get(`${environment.api_base_url}/files/pooja/files`).subscribe(
+    this.http.get(`${environment.api_base_url}/files/pooja}/files`).subscribe(
       (res: any) => {
         console.log(res);
         this.uploadFile();
@@ -57,28 +56,39 @@ export class AddImagePage {
       }
     );
   }
-
   uploadFile() {
-    const formData = new FormData();
-    formData.append('file', this.dataURItoBlob(this.pictures[0]), 'image.jpg');
+   if (this.pictures.length === 0) {
+      console.warn('No images to upload.');
+      return;
+    }
 
+    const formData = new FormData();
+
+    // Loop through each picture and append it to the FormData object
+    this.pictures.forEach((picture, index) => {
+      // Convert base64 string to Blob
+      const blob = this.base64ToBlob(picture);
+  
+      // Append Blob to FormData with a unique filename
+      formData.append('file', blob, `image_${index}.jpg`);
+    });
     this.http.post<any>(`${environment.api_base_url}/files/${this.abcd}/upload/`, formData).subscribe(
       (res) => {
         console.log('Image uploaded successfully:', res);
-
+        
       },
       (err) => {
         console.error('Error uploading image:', err);
-
+        
       }
     );
   }
 
-  dataURItoBlob(dataURI: string): Blob {
-    const byteString = atob(dataURI.split(',')[1]);
-    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    const ab = new ArrayBuffer(byteString.length);
-    const ia = new Uint8Array(ab);
+  base64ToBlob(base64: string): Blob {
+   const byteString = atob(base64.split(',')[1]);
+   const mimeString = 'image/jpeg';
+   const ab = new ArrayBuffer(byteString.length);
+   const ia = new Uint8Array(ab);
     for (let i = 0; i < byteString.length; i++) {
       ia[i] = byteString.charCodeAt(i);
     }
