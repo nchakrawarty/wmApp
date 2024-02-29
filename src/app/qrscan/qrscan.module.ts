@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { QRScanPageRoutingModule } from './qrscan-routing.module';
 
 import { QRScanPage } from './qrscan.page';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    QRScanPageRoutingModule
+    QRScanPageRoutingModule,
+    QRCodeModule,
   ],
-  declarations: []
+  declarations: [QRScanPage],
+  exports: [QRScanPage]
+  //declarations: []
 })
 export class QRScanPageModule {}

@@ -61,7 +61,7 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
     <!-- Add the QR Scan tab -->
-    <ion-tab-button tab="qrscan" class="qr-scan-tab">
+    <ion-tab-button tab="qrscan" class="qr-scan-tab" routerLink="qrscan" (click)="goToQRScanPage()">
       <ion-icon name="scan"></ion-icon>
       <ion-label>Scan QR</ion-label>
     </ion-tab-button>

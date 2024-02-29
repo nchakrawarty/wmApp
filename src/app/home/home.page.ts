@@ -28,6 +28,6 @@ export class HomePage {
   }
 
   goToQRScanPage() {
-    this.router.navigateByUrl('/qrscan');
+    this.router.navigateByUrl('qrscan');
   }
 }
