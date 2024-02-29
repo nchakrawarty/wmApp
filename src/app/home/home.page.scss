@@ -8,34 +8,31 @@ ion-content {
     margin-top: 20px;
     margin-bottom: 20px;
   }
-  
+
   ion-label {
     font-weight: bold;
   }
   
-  .button-row {
-    display: flex;
-    flex-direction: row; /* Ensure buttons are in a row */
-    justify-content: center; /* Center buttons horizontally */
-    margin-top: 20px;
-    width: 100%;
-  }
-  
-  ion-button {
-    margin: 0 3px; /* Add some space between buttons */
-    --background: #a5694680; /* Inactive button color */
-    --color: #ffffff; /* Text color for buttons */
-    width: 100%;
-  }
-
-  ion-button.active {
-    --background: #a56946; /* Active button color */
-  }
-  
   .qr-scan-tab {
+    width: auto;
+    height: 40px;
     --background: #A56946; /* Set the background color to brown */
     --color: #ffffff; /* Set the text color to white */
-    --border-radius: 20px;
-    border-radius: 20px; /* Add border radius */
-    margin: 0 10px; /* Add some margin */
+    border-radius: 50px; /* Add border radius */
+    margin: 0px; /* Add some margin */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }   
+
+  .qr-scan-tab ion-icon {
+    margin: 5px;
+    margin-right: 1px;
+    font-size: 27px; /* Adjust spacing between icon and text */
+  }
+
+  .qr-scan-tab ion-label {
+    margin: 5px;
+    font-size: 14px; /* Adjust the font size of the label */
+  }

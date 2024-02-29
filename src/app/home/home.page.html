@@ -10,7 +10,14 @@
 <ion-content class="ion-padding">
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>Overview</ion-card-subtitle>
+      <ion-row class="header-row">
+        <ion-col size="6">
+          <ion-card-subtitle>Overview</ion-card-subtitle>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+          <ion-card-subtitle>Center Name: {{ centerName }}</ion-card-subtitle>
+        </ion-col>
+      </ion-row>
     </ion-card-header>
     <ion-card-content>
       <ion-row>
@@ -19,51 +26,40 @@
           <p>{{ totalWaste }} kgs</p>
         </ion-col>
         <ion-col size="6" class="ion-text-right">
-          <ion-label>Collection of the Day</ion-label>
+          <ion-label>Collection of {{ collectionDate }}</ion-label>
           <p>{{ collectionOfTheDay }} kgs</p>
         </ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>
 
- <!-- Add tabs for Recyclable and Non-Recyclable items -->
- <ion-row class="button-row">
-  <ion-col size="6">
-    <ion-button class="recyclable" [ngClass]="{ 'active': isRecyclableSelected }" (click)="switchToRecyclable()">Recyclable</ion-button>
-  </ion-col>
-  <ion-col size="6">
-    <ion-button class="non-recyclable" [ngClass]="{ 'active': !isRecyclableSelected }" (click)="switchToNonRecyclable()">Non-Recyclable</ion-button>
-  </ion-col>
-</ion-row>
+  <ion-row class="button-row">
+    <ion-col>
+      <ion-tab-button expand="block" class="recyclable-button" (click)="showRecyclableItems()">Recyclable</ion-tab-button>
+    </ion-col>
+    <ion-col>
+      <ion-tab-button expand="block" class="non-recyclable-button" (click)="showNonRecyclableItems()">Non-Recyclable</ion-tab-button>
+    </ion-col>
+  </ion-row>
 
-<!-- Add the content for recyclable items -->
-<ion-list *ngIf="isRecyclableSelected">
-  <!-- Add your recyclable items here -->
-  <ion-item>
-    Recyclable Item 1
-  </ion-item>
-  <ion-item>
-    Recyclable Item 2
-  </ion-item>
-</ion-list>
+  <ion-list *ngIf="isRecyclableSelected">
+    <ion-item *ngFor="let item of recyclableItems">
+      {{ item }}
+    </ion-item>
+  </ion-list>
 
-<!-- Add the content for non-recyclable items -->
-<ion-list *ngIf="!isRecyclableSelected">
-  <!-- Add your non-recyclable items here -->
-  <ion-item>
-    Non-Recyclable Item 1
-  </ion-item>
-  <ion-item>
-    Non-Recyclable Item 2
-  </ion-item>
-</ion-list>
+  <ion-list *ngIf="!isRecyclableSelected">
+    <ion-item *ngFor="let item of nonRecyclableItems">
+      {{ item }}
+    </ion-item>
+  </ion-list>
 
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <!-- Add the QR Scan tab -->
-    <ion-tab-button tab="qrscan" class="qr-scan-tab">
+    <ion-button shape="round" expand="block" class="qr-scan-tab" (click)="goToQRScanPage()">
       <ion-icon name="scan"></ion-icon>
       <ion-label>Scan QR</ion-label>
-    </ion-tab-button>
+    </ion-button>
   </ion-tab-bar>
 </ion-tabs>
+</ion-content>
