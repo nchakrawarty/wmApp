@@ -1,88 +1,5 @@
-/* General styles */
-ion-content {
-  background-color: #ffffff;
-  padding: 20px;
-  width: 100%;
-}
-
-.enter-waste-txF {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-}
-
-.auto-group-ygvb-v8F {
-  width: 100%;
-  padding: 14.9rem 2.8rem 19.6rem 2.8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.auto-group-4igw-eK9,
-.auto-group-yekh-p79,
-.auto-group-sknj-zQw,
-.auto-group-ygnb-9SF,
-.auto-group-7dxd-itf {
-  margin-bottom: 2rem;
-  padding: 1.7rem 1.6rem;
-  width: 304px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  background-color: #f6f7f9;
-  border-radius: 10px;
-}
-
-.rectangle-common {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #000000;
-  flex-shrink: 0;
-}
-
-.dry-waste-BZy,
-.wet-waste-kFh,
-.sanitary-waste-v3h,
-.mixed-waste-gwy,
-.no-waste-Ftb {
-  margin-right: 170px;
-  width: 65px; /* Adjust width as needed */
-  font-family: Poppins;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: 0.3px;
-  color: #a56946;
-  white-space: nowrap;
-  text-align: left;
-}
-
-.enter-waste-txF .auto-group-jxjh-Jrs {
-  width: 304px;
-  height: 54px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.67;
-  letter-spacing: 0.03rem;
-  color: #ffffff;
-  font-family: Poppins, 'Source Sans Pro';
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #a56946;
-  border-radius: 1rem;
-  flex-shrink: 0;
-}
-
-
-/*ion-header {
-  // Maintain desired dimensions 
+ion-header {
+  /* Maintain desired dimensions */
   width: 100%;
   height: 48px;
 
@@ -95,9 +12,9 @@ ion-content {
     display: flex;
   }
 }
-// General styles 
+/* General styles */
 ion-content {
-  background-color: #ffffff; //Adjust background color 
+  background-color: #ffffff; /* Adjust background color */
   padding: 20px;
   width: 100%;
 
@@ -375,4 +292,4 @@ ion-content {
   flex-shrink: 0;
 }
 
-*/
+
