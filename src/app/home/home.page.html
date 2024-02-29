@@ -36,10 +36,10 @@
   <ion-grid class="ion-no-padding">
     <ion-row class="button-row">
       <ion-col style="padding-right: 10px;">
-        <ion-button expand="block" class="recyclable-button" (click)="showRecyclableItems()">Recyclable</ion-button>
+        <ion-button expand="block" id="recyclable-button" (click)="showRecyclableItems()">Recyclable</ion-button>
       </ion-col>
       <ion-col style="padding-left: 10px;">
-        <ion-button expand="block" class="non-recyclable-button" (click)="showNonRecyclableItems()">Non-Recyclable</ion-button>
+        <ion-button expand="block" id="non-recyclable-button" (click)="showNonRecyclableItems()">Non-Recyclable</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -61,6 +61,12 @@
       <ion-icon style="padding-right: 10px;" name="scan"></ion-icon>
       <ion-label>Scan QR</ion-label>
     </ion-button>
+  </ion-fab>
+
+  <ion-fab id="add-button" slot="fixed" horizontal="end" vertical="bottom" class="ion-padding">
+    <ion-fab-button (click)="addWaste()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
   </ion-fab>
 
 <!--ion-content class="ion-padding">
