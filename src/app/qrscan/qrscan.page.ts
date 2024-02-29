@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+<<<<<<< HEAD
 import { RouterLink } from '@angular/router';
 import { BarcodeScanner} from '@capacitor-community/barcode-scanner';
 import { Router } from '@angular/router';
@@ -100,50 +101,77 @@ export class QRScanPage implements OnDestroy{
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
 import { IonHeader, IonToolbar, IonContent, IonFab, IonTitle, IonIcon, IonButton, IonList, IonItem, IonLabel, IonInput, IonFabButton, IonButtons, IonCard, IonCardContent } from "@ionic/angular/standalone";
+=======
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+>>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c
 
 @Component({
   selector: 'app-home',
   templateUrl: 'qrscan.page.html',
   styleUrls: ['qrscan.page.scss'],
+<<<<<<< HEAD
   standalone: true,
   imports: [IonCardContent, IonCard, IonButtons, IonFabButton, IonInput, IonLabel, IonItem, IonList, IonButton, IonIcon, IonTitle, IonFab, IonContent, IonToolbar, IonHeader, IonButton, IonIcon, IonHeader, IonToolbar, IonTitle, IonContent],
+=======
+>>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c
 })
-export class QRScanPage implements OnInit {
+export class QRScanPage implements OnDestroy{
 
-  isSupported = false;
-  barcodes: Barcode[] = [];
+  qrstring="This is a Secret qrcode message";
+  scannedResult:any;
+  content_visibility="";
 
 
-  constructor(private alertController: AlertController) {}
+  constructor() {}
 
-  ngOnInit() {
-    BarcodeScanner.isSupported().then((result) => {
-      this.isSupported = result.supported;
-    });
-  }
-
-  async scan(): Promise<void> {
-    const granted = await this.requestPermissions();
-    if (!granted) {
-      this.presentAlert();
-      return;
+  async checkPermission(){
+    try{
+       //check or Request Permission
+       const status = await BarcodeScanner.checkPermission({ force: true });
+       if(status.granted){
+         //the user granted permission
+         return true;
+       }
+       return false;
+    }catch(e){
+      console.log(e);
+      return false;
     }
-    const { barcodes } = await BarcodeScanner.scan();
-    this.barcodes.push(...barcodes);
   }
 
-  async requestPermissions(): Promise<boolean> {
-    const { camera } = await BarcodeScanner.requestPermissions();
-    return camera === 'granted' || camera === 'limited';
+  async startScan(){
+    try{
+      const permission=await this.checkPermission();
+      if(!permission){
+        return;
+      }
+      await BarcodeScanner.hideBackground();
+      document.querySelector('body')?.classList.add('scanner-active');
+      this.content_visibility="hidden";
+      const result=await BarcodeScanner.startScan();
+      if(result?.hasContent){
+        this.scannedResult=result.content;
+        BarcodeScanner.showBackground();
+        console.log(this.scannedResult);
+        document.querySelector('body')?.classList.remove('scanner-active');
+        this.content_visibility="";
+      }
+    }catch(e){
+      console.log(e);
+      this.stopScan();
+    }
   }
 
-  async presentAlert(): Promise<void> {
-    const alert = await this.alertController.create({
-      header: 'Permission denied',
-      message: 'Please grant camera permission to use the barcode scanner.',
-      buttons: ['OK'],
-    });
-    await alert.present();
+  stopScan(){
+    BarcodeScanner.showBackground();
+    BarcodeScanner.stopScan();
+    document.querySelector('body')?.classList.remove('scanner-active');
+    this.content_visibility="";
   }
+
+  ngOnDestroy(): void {
+      this.stopScan();
+  }
+
 }
 */

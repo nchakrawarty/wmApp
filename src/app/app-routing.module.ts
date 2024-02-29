@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+<<<<<<< HEAD
 import { LoginPage } from './login/login.page';
 import { HomePage } from './home/home.page';
 import { EnterWastePage } from './enter-waste/enter-waste.page';
 //import { ItemsInsidePage } from './items-inside/items-inside.page';
+=======
+import { NoauthGuard } from './noauth.guard';
+>>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c
 
 
 const routes: Routes = [
@@ -15,65 +19,97 @@ const routes: Routes = [
 
 /*const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
+<<<<<<< HEAD
   { path: 'login', component: LoginPage },
   //{ path: 'home', component: HomePage, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },*/
 
+=======
+  /* {
+     path: '',
+     redirectTo: 'folder/Inbox',
+     pathMatch: 'full'
+   },*/
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
+    canActivate: [NoauthGuard]
+  },
+>>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule),
-    //canActivate: [AuthGuard]
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    canActivate: [AuthGuard]
   },
   {
     path: 'trips',
-    loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule)
+    loadChildren: () => import('./trips/trips.module').then( m => m.TripsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'qrscan',
-    loadChildren: () => import('./qrscan/qrscan.module').then( m => m.QRScanPageModule)
+    loadChildren: () => import('./qrscan/qrscan.module').then( m => m.QRScanPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'qrentry',
-    loadChildren: () => import('./qrentry/qrentry.module').then( m => m.QREntryPageModule)
+    loadChildren: () => import('./qrentry/qrentry.module').then( m => m.QREntryPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'enter-waste',
-    loadChildren: () => import('./enter-waste/enter-waste.module').then( m => m.EnterWastePageModule)
+    loadChildren: () => import('./enter-waste/enter-waste.module').then( m => m.EnterWastePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-payment',
-    loadChildren: () => import('./add-payment/add-payment.module').then( m => m.AddPaymentPageModule)
+    loadChildren: () => import('./add-payment/add-payment.module').then( m => m.AddPaymentPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-image',
-    loadChildren: () => import('./add-image/add-image.module').then( m => m.AddImagePageModule)
+    loadChildren: () => import('./add-image/add-image.module').then( m => m.AddImagePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'recycle-add',
-    loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule)
+    loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule),
+   canActivate: [AuthGuard]
   },
-
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule),
+    canActivate: [NoauthGuard]
   },
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'trip-start',
-    loadChildren: () => import('./trip-start/trip-start.module').then( m => m.TripStartPageModule)
+    loadChildren: () => import('./trip-start/trip-start.module').then( m => m.TripStartPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'trip-end',
-    loadChildren: () => import('./trip-end/trip-end.module').then( m => m.TripEndPageModule)
+    loadChildren: () => import('./trip-end/trip-end.module').then( m => m.TripEndPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'nonrecycle-add',
+    loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'items-inside',
+    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
+  },
+  {
+    path: 'items-inside',
+    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
   }
+    
 ];
 
 @NgModule({
@@ -82,5 +118,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
 
+export class AppRoutingModule {}

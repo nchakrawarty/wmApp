@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.prod';
+import { Urls } from '../constants/urls';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -34,7 +34,7 @@ export class RegisterPage {
 
     try {
       // Send a POST request to the backend API endpoint for user registration
-      const response = await this.http.post(`${environment.apiUrl}/Users`, userData).toPromise();
+      const response = await this.http.post(`${Urls.USERS}`, userData).toPromise();
       console.log("Registration successful:", response);
       this.presentToast('Registration successful', true);
       // Redirect to login page

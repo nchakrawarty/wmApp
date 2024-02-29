@@ -11,6 +11,7 @@ import { JsonPipe } from '@angular/common';
 })
 export class TripsPage implements OnInit {
 
+  userID: any;
   mainList: any;
   pastTrips: any = [];
   currentTrips: any = [];
@@ -19,6 +20,12 @@ export class TripsPage implements OnInit {
   newCenterId: any = ['65dc23c50b3aeb76fd38dc07'];
 
   constructor(private tripService: TripService, private navCtrl: NavController) {
+    const data = localStorage.getItem('userData');
+    if (data !== null) {
+      const userData = JSON.parse(data);
+      this.userID = userData.id;
+      this.newCenterId = userData.newCenterId;
+    }
     this.getTripList();
   }
 

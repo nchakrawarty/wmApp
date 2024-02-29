@@ -1,11 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+<<<<<<< HEAD
     <ion-buttons slot="start" (click)="navigateBack()">
+=======
+    <ion-buttons slot="start">
+>>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c
       <ion-icon style="color:#fff" name="chevron-back-outline"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+<<<<<<< HEAD
 <ion-content >
   <ion-header>
     <ion-toolbar style="background-color: transparent;">
@@ -45,3 +50,31 @@
   
 </ion-content>
   
+=======
+
+<ion-content  [style.visibility]="content_visibility">
+  <ion-header collapse="condense">
+  </ion-header>
+  <div>
+    <ion-icon name="camera-reverse-outline"></ion-icon>
+  </div>
+  <div>
+    <ion-card class="ion-text-center">
+      <ion-card-content >
+        <!-- <qrcode
+          [qrdata]="'qrstring'" [width]="256" [errorCorrectionLevel]="'M'">
+        </qrcode> -->
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-button
+    expand="block" class="ion-margin" (click)="startScan()">Scan Qr Code
+  </ion-button>
+
+  <ion-item *ngIf="scannedResult">
+    <ion-label class="ion-text-wrap">Scanned Result:{{scannedResult}}</ion-label>
+  </ion-item>
+
+</ion-content>
+>>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c

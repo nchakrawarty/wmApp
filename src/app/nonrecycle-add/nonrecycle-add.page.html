@@ -1,6 +1,6 @@
-<ion-header>
+<ion-header>  
   <ion-toolbar color="orange">
-    <ion-title>Recycle</ion-title>
+    <ion-title>Non-Recycle</ion-title>
     <ion-buttons slot="start"> 
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons> 
@@ -10,7 +10,7 @@
 <ion-content>
   <ion-item lines="none">
     <ion-label position="stacked">Center</ion-label>
-    <ion-select [(ngModel)]="selectedWaste" placeholder="Select Waste" (ionChange)="onCenterChange()">
+    <ion-select [(ngModel)]="selectedCenter" placeholder="Select Center" (ionChange)="onCenterChange()">
       <ion-select-option *ngFor="let center of centers" [value]="center.centerName">{{ center.centerName }}</ion-select-option>
     </ion-select>
   </ion-item>
@@ -18,13 +18,16 @@
   <ion-item lines="none">
     <ion-label position="stacked">Waste</ion-label>
     <ion-select [(ngModel)]="selectedWaste" placeholder="Select Waste">
-      <ion-select-option value="KRT">KRT</ion-select-option>
-      <ion-select-option value="Paper">Paper</ion-select-option>
-      <ion-select-option value="White Cover">White Cover</ion-select-option>
-      <ion-select-option value="Brown">Brown</ion-select-option>
-      <ion-select-option value="Waste Bag">Waste Bag</ion-select-option>
-      <ion-select-option value="Oil Cover">Oil Cover</ion-select-option>
-      <ion-select-option value="Waste Glass Plastic">Waste Glass Plastic</ion-select-option>
+      <ion-select-option value="M.L.P">M.L.P</ion-select-option>
+      <ion-select-option value="Greased Cloth">Greased Cloth</ion-select-option>
+      <ion-select-option value="Thermocol">Thermocol</ion-select-option>
+      <ion-select-option value="Tablet Cover">Tablet Cover</ion-select-option>
+      <ion-select-option value="Ceramic">Ceramic</ion-select-option>
+      <ion-select-option value="Cloth Items">Cloth Items</ion-select-option>
+      <ion-select-option value="Leather Items">Leather Items</ion-select-option>
+      <ion-select-option value="Ruber Items">Ruber Items</ion-select-option>
+      <ion-select-option value="Footwear">Footwear</ion-select-option>
+      <ion-select-option value="Sanitary Items">Sanitary Items</ion-select-option>
     </ion-select>
   </ion-item>
 
@@ -40,7 +43,7 @@
       <ion-list>
         <ion-item *ngFor="let item of wasteList">
           <ion-label>{{ item.name }} - {{ item.amount }} kg</ion-label>
-          <ion-button  color="orange" slot="end" (click)="removeWaste(item.newCenterid)">Delete</ion-button>
+          <ion-button color="orange" slot="end" (click)="removeWaste(item.newCenterid)">Delete</ion-button>
         </ion-item>
       </ion-list>
     </ion-card-content>

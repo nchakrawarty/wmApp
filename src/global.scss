@@ -38,3 +38,12 @@ ion-tab-bar {
     --color: #82868F;
     --color-selected: #316974;
 }
+
+body.scanner-active {
+    --background: transparent;
+    --ion-background-color: transparent;
+}
+
+ion-button {
+    text-transform: capitalize;
+  }
