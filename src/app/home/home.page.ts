@@ -30,10 +30,17 @@ export class HomePage {
   }
 
   addWaste() {
+    if(this.isRecyclableSelected) {
+      console.log("Redirect to add recyclable");
+      this.router.navigate(['recycle-add']);
+    } else {
+      console.log("Redirect to add non-recyclable");
+      this.router.navigate(['nonrecycle-add']);
+    }
   }
 
   showRecyclableItems() {
-    console.log('recyclable')
+    console.log('recyclable');
     this.isRecyclableSelected = true;
     if(this.nonRecyclableButton != null) {
       this.nonRecyclableButton.style.opacity=0.6;
@@ -44,7 +51,7 @@ export class HomePage {
   }
 
   showNonRecyclableItems() {
-    console.log('nonrecyclable')
+    console.log('nonrecyclable');
     this.isRecyclableSelected = false;
     if(this.nonRecyclableButton != null) {
       this.nonRecyclableButton.style.opacity=1.0;
