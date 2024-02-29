@@ -82,13 +82,9 @@ const routes: Routes = [
   },
   {
     path: 'items-inside',
-    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
-  },
-  {
-    path: 'items-inside',
-    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
+    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule),
+    canActivate: [AuthGuard]
   }
-    
 ];
 
 @NgModule({
