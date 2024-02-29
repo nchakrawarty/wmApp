@@ -1,8 +1,8 @@
 <ion-app class="ion-padding">
 
-  <ion-menu color="secondary" contentId="main-content" type="overlay">
+  <ion-menu contentId="main-content" type="overlay">
     <ion-content>
-      <ion-list >
+      <ion-list>
         <ion-list-header>Hi, {{ username }}</ion-list-header>
         <ion-note>{{ email }}</ion-note>
         <br>
@@ -12,13 +12,8 @@
           <ion-toggle (click)="switchLanguage()">Kannada</ion-toggle>
         </ion-item>
         <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-<<<<<<< HEAD
-          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-            <ion-icon class="menu-icon" aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-=======
           <ion-item routerDirection="root" [routerLink]="p.url ? [p.url] : ''" (click)="handleNavigation(p.action || '')" lines="none" detail="false" routerLinkActive="selected">
             <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
->>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c
             <ion-label>{{ p.title }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
