@@ -1,10 +1,30 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+<<<<<<< HEAD
+import { LoginPage } from './login/login.page';
+import { HomePage } from './home/home.page';
+import { EnterWastePage } from './enter-waste/enter-waste.page';
+//import { ItemsInsidePage } from './items-inside/items-inside.page';
+=======
 import { NoauthGuard } from './noauth.guard';
+>>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c
+
 
 const routes: Routes = [
+  { path: '', redirectTo: 'enter-waste', pathMatch: 'full' }, // Set login page as default route
+  { path: 'enter-waste', component:EnterWastePage ,canActivate: [AuthGuard]  },
+  //{ path: 'home', component: HomePage, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+/*const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
+<<<<<<< HEAD
+  { path: 'login', component: LoginPage },
+  //{ path: 'home', component: HomePage, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },*/
+
+=======
   /* {
      path: '',
      redirectTo: 'folder/Inbox',
@@ -15,6 +35,7 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
     canActivate: [NoauthGuard]
   },
+>>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule),

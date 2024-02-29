@@ -33,7 +33,13 @@
     "@capacitor/keyboard": "5.0.8",
     "@capacitor/status-bar": "5.0.7",
     "@capacitor/storage": "^1.2.5",
+<<<<<<< HEAD
+    "@ionic-native/core": "^5.36.0",
+    "@ionic-native/flashlight": "^5.36.0",
+    "@ionic/angular": "^7.7.2",
+=======
     "@ionic/angular": "^7.7.3",
+>>>>>>> ebaf700009c0f19d3fd5780fc223d5a611f7bb9c
     "@ionic/pwa-elements": "^3.2.2",
     "angularx-qrcode": "^17.0.0",
     "cocoapods": "^0.0.0",
