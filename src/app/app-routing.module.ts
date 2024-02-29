@@ -48,7 +48,7 @@ const routes: Routes = [
   {
     path: 'add-image',
     loadChildren: () => import('./add-image/add-image.module').then( m => m.AddImagePageModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'recycle-add',
@@ -82,8 +82,8 @@ const routes: Routes = [
   },
   {
     path: 'items-inside',
-    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
-  }
+    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule),
+  },
 
 
   //{
