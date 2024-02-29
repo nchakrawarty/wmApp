@@ -16,6 +16,7 @@ import { ItemsInsidePage } from './items-inside/items-inside.page';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // Set login page as default route
+
   /* {
      path: '',
      redirectTo: 'folder/Inbox',
@@ -64,7 +65,7 @@ const routes: Routes = [
   {
     path: 'recycle-add',
     loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule),
-    canActivate: [AuthGuard]
+   canActivate: [AuthGuard]
   },
 
   {
@@ -89,22 +90,19 @@ const routes: Routes = [
   },
 {
     path: 'nonrecycle-add',
-    loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule)
+    loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'items-inside',
-    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
-  }
-
-
-  //{
-      //path: 'nonrecycle-add',
-      //loadChildren: () => import('./nonrecycle-add/nonrecycle-add.module').then( m => m.NonrecycleAddPageModule)
-    //},
-    {
-      path: 'items-inside',
-      loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule)
-    }
+    loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule),
+    canActivate: [AuthGuard]
+  },
+   // {
+      //path: 'items-inside',
+     // loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule),
+     // canActivate: [AuthGuard]
+    //
     
 ];
 
