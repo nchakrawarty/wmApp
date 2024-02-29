@@ -56,15 +56,12 @@
     </ion-item>
   </ion-list>
 
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-button shape="round" expand="block" class="qr-scan-tab" (click)="goToQRScanPage()">
-        <ion-icon name="scan"></ion-icon>
-        <ion-label>Scan QR</ion-label>
-      </ion-button>
-    </ion-tab-bar>
-  </ion-tabs>
-</ion-content>
+  <ion-fab id="qr-scan-button" slot="fixed" horizontal="center" vertical="bottom" class="ion-no-padding">
+    <ion-button shape="round" (click)="goToQRScanPage()">
+      <ion-icon style="padding-right: 10px;" name="scan"></ion-icon>
+      <ion-label>Scan QR</ion-label>
+    </ion-button>
+  </ion-fab>
 
 <!--ion-content class="ion-padding">
   <ion-card>
