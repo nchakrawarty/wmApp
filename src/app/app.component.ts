@@ -28,9 +28,6 @@ export class AppComponent {
     }
   }
 
-  
-
-
   public switchLanguage() {
     if(this.language == "en") {
       this.language = "kan";
@@ -54,12 +51,9 @@ export class AppComponent {
     
   }
 
-
   handleNavigation(action: string) {
     if (action === 'logout') {
         this.authService.logout();
       }
     }
   }
-
-
