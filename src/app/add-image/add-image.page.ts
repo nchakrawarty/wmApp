@@ -4,9 +4,9 @@ import { Plugins } from '@capacitor/core';
 import { CameraResultType, CameraSource } from '@capacitor/camera';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import {defineCustomElements} from '@ionic/pwa-elements/loader'
+// import {defineCustomElements} from '@ionic/pwa-elements/loader'
 
-defineCustomElements(window);
+// defineCustomElements(window);
 
 const { Camera } = Plugins;
 @Component({
@@ -74,12 +74,12 @@ export class AddImagePage {
     });
     this.http.post<any>(`${environment.api_base_url}/files/${this.abcd}/upload/`, formData).subscribe(
       (res) => {
-        console.log('Images uploaded successfully:', res);
-        this.pictures = [];
+        console.log('Image uploaded successfully:', res);
+        
       },
       (err) => {
-        console.error('Error uploading images:', err);
-        console.error(err.message);
+        console.error('Error uploading image:', err);
+        
       }
     );
   }
@@ -94,4 +94,4 @@ export class AddImagePage {
     }
     return new Blob([ab], { type: mimeString });
   }
-} 
+}

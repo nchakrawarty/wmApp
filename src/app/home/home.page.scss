@@ -1,38 +1,56 @@
 ion-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items horizontally */
-  }
-  
-  ion-card {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+}
 
-  ion-label {
-    font-weight: bold;
-  }
-  
-  .qr-scan-tab {
-    width: auto;
-    height: 40px;
-    --background: #A56946; /* Set the background color to brown */
-    --color: #ffffff; /* Set the text color to white */
-    border-radius: 50px; /* Add border radius */
-    margin: 0px; /* Add some margin */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }   
+ion-card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
-  .qr-scan-tab ion-icon {
-    margin: 5px;
-    margin-right: 1px;
-    font-size: 27px; /* Adjust spacing between icon and text */
-  }
+ion-label {
+  font-weight: bold;
+}
 
-  .qr-scan-tab ion-label {
-    margin: 5px;
-    font-size: 14px; /* Adjust the font size of the label */
-  }
+.qr-scan-tab {
+  width: auto;
+  height: 40px;
+  --background: #A56946; /* Set the background color to brown */
+  --color: #ffffff; /* Set the text color to white */
+  border-radius: 50px; /* Add border radius */
+  margin: 0px; /* Add some margin */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}   
+
+.qr-scan-tab ion-icon {
+  margin: 5px;
+  margin-right: 1px;
+  font-size: 27px; /* Adjust spacing between icon and text */
+}
+
+.qr-scan-tab ion-label {
+  margin: 5px;
+  font-size: 14px; /* Adjust the font size of the label */
+}
+
+.button-row {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+ion-button {
+  --background: #A56946;
+  border-radius: 10px;
+}
+
+ion-fab-button {
+  --background: #316974;
+}
+
+ion-card {
+  border-radius: 10px;
+}
