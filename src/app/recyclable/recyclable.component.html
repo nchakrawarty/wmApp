@@ -1,0 +1,15 @@
+<ion-grid>
+  <ion-row class="card-row">
+    <ion-col class="card-col" size="4" *ngFor="let item of recyclableItems" >
+      <ion-card (click)="redirectToDetailPage(item)" scroll="false">
+        <ion-card-content>
+        <img src="assets/group-30.png" alt="Item Image">
+        <ion-card-header>
+          <ion-card-subtitle>{{ item.name }}</ion-card-subtitle>
+          <ion-card-title>{{ item.amount }} Kgs</ion-card-title>
+        </ion-card-header>
+      </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

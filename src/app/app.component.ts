@@ -16,9 +16,9 @@ export class AppComponent {
     { title: 'Logout', action: 'logout' , icon: 'power' }
   ];
 
-  public username = "";
-  public email = "";
-  public center = "";
+  public username = "default";
+  public email = "default";
+  public center = "default";
   constructor(private authService: AuthService) {
     const data = localStorage.getItem('userData');
     if (data !== null) {

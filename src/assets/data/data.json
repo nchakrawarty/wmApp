@@ -1,0 +1,222 @@
+[
+    {
+       "name": "Food Cover",
+       "amount": 4.3,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66d9",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಆಹಾರದ ಪೊಟ್ಟಣ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Aluminium Tin",
+       "amount": 2.5,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66da",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಅಲ್ಯೂಮಿನಿಯಂ ಟಿನ್",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "PET",
+       "amount": 40.5,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66db",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಪಿ.ಇ.ಟಿ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Black Item",
+       "amount": 4.5,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66dc",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಕಪ್ಪು ವಸ್ತು",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Metal",
+       "amount": 5.5,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66dd",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಲೋಹ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "E-waste",
+       "amount": 2.9,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66de",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಇ-ತ್ಯಾಜ್ಯ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Ice-cream Cup",
+       "amount": 3,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66df",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಐಸ್ ಕ್ರೀಮ್ ತಟ್ಟೆ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Glass Bottle",
+       "amount": 9,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66e0",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಗಾಜಿನ ಬಾಟಲಿ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Mixed Item",
+       "amount": 39,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66e1",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಮಿಶ್ರ ವಸ್ತು",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Medicine Cover & Tonic",
+       "amount": 2.7,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd12f82b86915ebce66e2",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಮೆಡಿಸಿನ್ ಕವರ್ ಮತ್ತು ಟಾನಿಕ್",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "M.L.P",
+       "amount": 49,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd1b182b86915ebce66e3",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "non-recyclable",
+       "kannadaName": "ಎಮ್ ಎಲ್ ಪಿ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಾಡಲಾಗದಿರುವುದು"
+     },
+     {
+       "name": "Cloth Items",
+       "amount": 4.9,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd1b182b86915ebce66e4",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "non-recyclable",
+       "kannadaName": "ಬಟ್ಟೆ ವಸ್ತುಗಳು",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಾಡಲಾಗದಿರುವುದು"
+     },
+     {
+       "name": "Leather Items",
+       "amount": 7.5,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd1b182b86915ebce66e5",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "non-recyclable",
+       "kannadaName": "ಚರ್ಮದ ವಸ್ತುಗಳು",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಾಡಲಾಗದಿರುವುದು"
+     },
+     {
+       "name": "Footwear",
+       "amount": 10,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd1b182b86915ebce66e6",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "non-recyclable",
+       "kannadaName": "ಪಾದರಕ್ಷೆ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಾಡಲಾಗದಿರುವುದು"
+     },
+     {
+       "name": "KRT",
+       "amount": 33.9,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd2dc82b86915ebce66e7",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಕೆ ಆರ್ ಟಿ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Paper",
+       "amount": 42.9,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd2dc82b86915ebce66e8",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಪೇಪರ್",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "White Cover",
+       "amount": 65.2,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd2dc82b86915ebce66e9",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಬಿಳಿ ಜರಿ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Colour",
+       "amount": 33,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd2dc82b86915ebce66ea",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಬಣ್ಣದ ಜರಿ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Brown",
+       "amount": 49,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd2dc82b86915ebce66eb",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಕಂದು ರಟ್ಟು",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Waste Bag",
+       "amount": 18.5,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd2dc82b86915ebce66ec",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ವೇಸ್ಟ್ ಚೀಲ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Oil Cover",
+       "amount": 6.5,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd2dc82b86915ebce66ed",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಎಣ್ಣೆ ಪ್ಯಾಕೆಟ್",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     },
+     {
+       "name": "Water Glass",
+       "amount": 7,
+       "date": "2023-10-27T00:00:00.000Z",
+       "id": "653bd2dc82b86915ebce66ee",
+       "newCenterId": "61fd3296376b561cb446a015",
+       "type": "recyclable",
+       "kannadaName": "ಪ್ಲಾಸ್ಟಿಕ್ ನೀರಿನ ಲೋಟ",
+       "kannadaType": "ಮರುಬಳಕೆ ಮಡಲಾಗುವುದು"
+     }
+]

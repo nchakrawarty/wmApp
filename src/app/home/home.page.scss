@@ -15,7 +15,7 @@ ion-label {
 
 .qr-scan-tab {
   width: auto;
-  height: 40px;
+  height: 50px;
   --background: #A56946; /* Set the background color to brown */
   --color: #ffffff; /* Set the text color to white */
   border-radius: 50px; /* Add border radius */
@@ -28,17 +28,25 @@ ion-label {
 
 .qr-scan-tab ion-icon {
   margin: 5px;
-  margin-right: 1px;
-  font-size: 27px; /* Adjust spacing between icon and text */
+  margin-right: 10px;
+  font-size: 27px; 
 }
 
 .qr-scan-tab ion-label {
-  margin: 5px;
+  margin-left: 10px;
   font-size: 14px; /* Adjust the font size of the label */
 }
 
 .button-row {
   padding-left: 10px;
+  padding-right: 10px;
+}
+
+.recyclable-button{
+  padding-left: 10px;
+}
+
+.non-recyclable-button{
   padding-right: 10px;
 }
 

@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
+import { RecyclableComponent } from '../recyclable/recyclable.component';
+import { NonRecyclableComponent } from '../non-recyclable/non-recyclable.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage,RecyclableComponent,NonRecyclableComponent]
 })
 export class HomePageModule {}

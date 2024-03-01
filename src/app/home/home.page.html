@@ -23,11 +23,11 @@
       <ion-row>
         <ion-col size="6">
           <ion-label>Total Waste</ion-label>
-          <p>{{ totalWaste }} kgs</p>
+          <p>{{ totalWaste }} Kgs</p>
         </ion-col>
         <ion-col size="6" class="ion-text-right">
-          <ion-label>Collection of {{ collectionDate }}</ion-label>
-          <p>{{ collectionOfTheDay }} kgs</p>
+          <ion-label>Collection of {{ todayDate }}</ion-label>
+          <p>{{ totalWasteToday }} Kgs</p>
         </ion-col>
       </ion-row>
     </ion-card-content>
@@ -35,30 +35,21 @@
 
   <ion-grid class="ion-no-padding">
     <ion-row class="button-row">
-      <ion-col style="padding-right: 10px;">
+      <ion-col>
         <ion-button expand="block" id="recyclable-button" (click)="showRecyclableItems()">Recyclable</ion-button>
       </ion-col>
-      <ion-col style="padding-left: 10px;">
+      <ion-col>
         <ion-button expand="block" id="non-recyclable-button" (click)="showNonRecyclableItems()">Non-Recyclable</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-list *ngIf="isRecyclableSelected">
-    <ion-item *ngFor="let item of recyclableItems">
-      {{ item }}
-    </ion-item>
-  </ion-list>
-
-  <ion-list *ngIf="!isRecyclableSelected">
-    <ion-item *ngFor="let item of nonRecyclableItems">
-      {{ item }}
-    </ion-item>
-  </ion-list>
+  <app-recyclable *ngIf="isRecyclableSelected"></app-recyclable>
+  <app-non-recyclable *ngIf="!isRecyclableSelected"></app-non-recyclable>
 
   <ion-fab id="qr-scan-button" slot="fixed" horizontal="center" vertical="bottom" class="ion-no-padding">
     <ion-button shape="round" (click)="goToQRScanPage()">
-      <ion-icon style="padding-right: 10px;" name="scan"></ion-icon>
+      <ion-icon name="scan"></ion-icon>
       <ion-label>Scan QR</ion-label>
     </ion-button>
   </ion-fab>
