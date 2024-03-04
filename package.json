@@ -39,6 +39,7 @@
     "cocoapods": "^0.0.0",
     "cordova-plugin-qrscanner": "^3.0.1",
     "ionicons": "^7.0.0",
+    "ngx-qrcode": "^0.1.0-rc.1",
     "rxjs": "^7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

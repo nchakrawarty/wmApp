@@ -1,24 +1,78 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" (click)="navigateBack()">
       <ion-icon style="color:#fff" name="chevron-back-outline"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+<ion-content >
+  <ion-header>
+    <ion-toolbar style="background-color: transparent;">
+      <ion-button slot="start" fill="solid" class="switch-camera"(click)="toggleCamera()">
+        <ion-icon name="camera-reverse-sharp" style="color: black"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" fill="solid" class="flash-sharp" (click)="toggleFlashlight()">
+        <ion-icon name="flash-sharp"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+  
+  <div class="scanarea">
+    <div class="centered-card">
+      <ion-card class="ion-text-center card-size">
+        <ion-card-content>
+          <qrcode
+            [qrdata]="'qrstring'"
+            [width]="250"
+            [errorCorrectionLevel]="'M'"
+            style="opacity: 0;"
+          >
+          </qrcode>
+          <div class="scan-line"></div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+
+  <!--<div class="scan-result" *ngIf="scannedResult">
+    <p>Scanned Result: {{ scannedResult }}</p>
+  </div>-->
+  <div>
+    <p class="scan-instruction">Place a barcode inside the scan area</p>
+  </div>
+  
+</ion-content>
+
+
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon style="color:#fff" name="chevron-back-outline"></ion-icon>
+    </ion-buttons>
+    </ion-toolbar>
+</ion-header>
 
 <ion-content  [style.visibility]="content_visibility">
-  <ion-header collapse="condense">
+  <ion-header >
   </ion-header>
-  <div>
-    <ion-icon name="camera-reverse-outline"></ion-icon>
-  </div>
-  <div>
-    <ion-card class="ion-text-center">
+  <ion-toolbar>
+    <ion-button slot="start" fill="solid" class="switch-camera"(click)="toggleCamera()">
+      <ion-icon name="camera-reverse-sharp"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" fill="solid" class="flash-sharp">
+      <ion-icon name="flashEnabled ? 'flash-off-sharp' : 'flash-sharp'"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+
+
+  <div class="scanarea">
+    <ion-card class="ion-text-center" opacity="0">
       <ion-card-content >
-        <!-- <qrcode
+        <qrcode opacity="0"
           [qrdata]="'qrstring'" [width]="256" [errorCorrectionLevel]="'M'">
-        </qrcode> -->
+        </qrcode>
       </ion-card-content>
     </ion-card>
   </div>
@@ -31,4 +85,7 @@
     <ion-label class="ion-text-wrap">Scanned Result:{{scannedResult}}</ion-label>
   </ion-item>
 
+  <ion-text >Place a barcode inside the scan area</ion-text>
+
 </ion-content>
+-->
