@@ -1,12 +1,14 @@
 <ion-header>  
   <ion-toolbar color="orange">
-    <ion-title></ion-title>
+    <ion-title>{{ selectedOption }} Details</ion-title>
     <ion-buttons slot="start"> 
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons> 
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-padding">
+  <!-- Display total amount and kilograms -->
   <ion-card>
     <ion-card-header>
       <ion-card-subtitle>Overview</ion-card-subtitle>
@@ -15,29 +17,15 @@
       <ion-row>
         <ion-col size="6">
           <ion-label>Total Amount: {{ totalAmount }}</ion-label>
-         
         </ion-col>
         <ion-col size="6" class="ion-text-right">
           <ion-label>Total KG: {{ totalKilograms }}</ion-label>
-        
         </ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>
-<ion-content>
-  <ion-item>
-    <ion-label>Select Option:</ion-label>
-    <ion-select [(ngModel)]="selectedOption" (ionChange)="displayDetails()">
-      <ion-select-option value="KRT">KRT</ion-select-option>
-      <ion-select-option value="Paper">Paper</ion-select-option>
-      <ion-select-option value="White Cover">White Cover</ion-select-option>
-      <ion-select-option value="Brown">Brown</ion-select-option>
-      <ion-select-option value="Waste Bag">Waste Bag</ion-select-option>
-      <ion-select-option value="Oil Cover">Oil Cover</ion-select-option>
-      <ion-select-option value="Waste Glass Plastic">Waste Glass Plastic</ion-select-option>
-    </ion-select>
-  </ion-item>
 
+  <!-- Display individual records -->
   <ion-card *ngFor="let record of selectedRecords">
     <ion-card-content>
       <ion-card-subtitle>
@@ -46,7 +34,6 @@
       <ion-card-subtitle *ngIf="record.name !== ''">
         <strong>Amount:</strong> {{ record.amount }}
       </ion-card-subtitle>
-   
     </ion-card-content>
   </ion-card>
 </ion-content>

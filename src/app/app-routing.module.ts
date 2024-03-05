@@ -53,7 +53,7 @@ const routes: Routes = [
   {
     path: 'recycle-add',
     loadChildren: () => import('./recycle-add/recycle-add.module').then( m => m.RecycleAddPageModule),
-   canActivate: [AuthGuard]
+   //canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -83,7 +83,7 @@ const routes: Routes = [
   {
     path: 'items-inside',
     loadChildren: () => import('./items-inside/items-inside.module').then( m => m.ItemsInsidePageModule),
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   }
 ];
 

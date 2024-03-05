@@ -1,36 +1,35 @@
 import { Component } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-// import { FilesystemDirectory, Filesystem } from '@capacitor/filesystem';
-import { CameraResultType, CameraSource } from '@capacitor/camera';
+import { CameraResultType } from '@capacitor/camera';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-// import {defineCustomElements} from '@ionic/pwa-elements/loader'
+import { FilesystemDirectory } from '@capacitor/filesystem';
 
-// defineCustomElements(window);
+const { Camera, Filesystem } = Plugins;
 
-const { Camera } = Plugins;
 @Component({
   selector: 'app-add-image',
   templateUrl: './add-image.page.html',
   styleUrls: ['./add-image.page.scss'],
 })
 export class AddImagePage {
+
+  abcd: string = 'pooja';
   pictures: string[] = [];
-  abcd: string = 'pooja'; // Initialize my name for eg
-  image: any;
-  alertController: any;
 
   constructor(private http: HttpClient) {}
+
   async takePhoto() {
     try {
       const capturedPhoto = await Camera['getPhoto']({
         quality: 100,
         allowEditing: false,
-        resultType: CameraResultType.DataUrl,
+        resultType: CameraResultType.Base64,
+        format: 'jpeg' // Specify JPEG format
       });
-
-      if (capturedPhoto && capturedPhoto.dataUrl) {
-        this.pictures.push(capturedPhoto.dataUrl);
+  
+      if (capturedPhoto && capturedPhoto.base64String) {
+        await this.savePicture(capturedPhoto.base64String);
       } else {
         console.warn('No image captured.');
       }
@@ -38,60 +37,82 @@ export class AddImagePage {
       console.error('Error taking photo:', error);
     }
   }
-
-  saveImages() {
-    this.http.get(`${environment.api_base_url}/files/pooja}/files`).subscribe(
-      (res: any) => {
-        console.log(res);
-        this.uploadFile();
-      },
-      (err) => {
-        console.log(err);
-        if (err.statusText === 'Not Found') {
-          this.http.post(`${environment.api_base_url}/files/`, { name: this.abcd }).subscribe((res: any) => {
-            console.log(res);
-            this.uploadFile();
-          });
-        }
-      }
-    );
-  }
-  uploadFile() {
-   if (this.pictures.length === 0) {
-      console.warn('No images to upload.');
-      return;
-    }
-
-    const formData = new FormData();
-
-    // Loop through each picture and append it to the FormData object
-    this.pictures.forEach((picture, index) => {
-      // Convert base64 string to Blob
-      const blob = this.base64ToBlob(picture);
   
-      // Append Blob to FormData with a unique filename
-      formData.append('file', blob, `image_${index}.jpg`);
-    });
-    this.http.post<any>(`${environment.api_base_url}/files/${this.abcd}/upload/`, formData).subscribe(
-      (res) => {
-        console.log('Image uploaded successfully:', res);
-        
-      },
-      (err) => {
-        console.error('Error uploading image:', err);
-        
-      }
-    );
+  async savePicture(base64Data: string): Promise<void> {
+    try {
+      const fileName = new Date().getTime() + '.jpeg';
+      const savedFile = await Filesystem['writeFile']({
+        path: `${FilesystemDirectory.Data}/${fileName}`, // Provide a valid path
+        data: base64Data,
+        directory: FilesystemDirectory.Data,
+      });
+
+      const filePath = savedFile.uri;
+      const base64Image = 'data:image/jpeg;base64,' + base64Data;
+      this.pictures.push(base64Image);
+    } catch (error) {
+      console.error('Error saving picture:', error);
+    }
   }
 
-  base64ToBlob(base64: string): Blob {
-   const byteString = atob(base64.split(',')[1]);
-   const mimeString = 'image/jpeg';
-   const ab = new ArrayBuffer(byteString.length);
-   const ia = new Uint8Array(ab);
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
+  async saveImages() {
+    console.log('Images to upload:', this.pictures);
+  }
+
+
+  async uploadFile(formData: FormData) {
+    try {
+      const response = await this.http.post<any>(
+        `${environment.api_base_url}/files/`,
+        formData
+      ).toPromise();
+      
+      // Check if the response indicates success
+      if (response.success) {
+        console.log('Images uploaded successfully!');
+        // Here you can perform any additional actions upon successful upload
+      } else {
+        console.error('Error uploading images:', response.error);
+        // Handle the case where the upload is not successful
+      }
+    } catch (error) {
+      console.error('Error uploading images:', error);
     }
-    return new Blob([ab], { type: mimeString });
+  }
+  
+  
+  async blobToBase64(blob: Blob): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        resolve(base64String.split(',')[1]); // Extract base64 portion of the result
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+  
+  uploadImages() {
+    if (this.pictures && this.pictures.length > 0) {
+      const formData = new FormData();
+      this.pictures.forEach((picture: string | Blob, index: number) => {
+        if (typeof picture === 'string') {
+          // Convert base64 image to Blob if picture is a string
+          const byteCharacters = atob(picture.split(',')[1]);
+          const byteNumbers = new Array(byteCharacters.length);
+          for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+          }
+          const byteArray = new Uint8Array(byteNumbers);
+          picture = new Blob([byteArray], { type: 'image/jpeg' });
+        }
+        // Append each Blob image to FormData
+        formData.append('file' + index, picture);
+      });
+      this.uploadFile(formData);
+    } else {
+      console.warn('No images to upload.');
+    }
   }
 }
