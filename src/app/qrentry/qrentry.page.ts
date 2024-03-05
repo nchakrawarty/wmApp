@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -10,15 +11,26 @@ import { NavController } from '@ionic/angular';
 })
 export class QREntryPage implements OnInit {
 
+  name: string = '';
+  contact: string = '';
 
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private route: ActivatedRoute) {}
   
   navigateBack() {
-    this.navCtrl.navigateBack('/qrscan'); 
+    this.navCtrl.back();
   }
+  
 
   ngOnInit() {
+    const queryParams = this.route.snapshot.queryParams;
+    const scannedData = queryParams['scannedData']; // Use index signature
+
+    if (scannedData) {
+      const [username, phone] = scannedData.split(':');
+      this.name = username;
+      this.contact = phone;
+    }
   }
 
 }

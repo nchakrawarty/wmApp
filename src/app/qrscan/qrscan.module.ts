@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { QRScanPage } from './qrscan.page';
-// import { QRCodeModule } from 'angularx-qrcode';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { QRScanPageRoutingModule } from './qrscan-routing.module';
 
@@ -14,7 +14,7 @@ import { QRScanPageRoutingModule } from './qrscan-routing.module';
     FormsModule,
     IonicModule,
     QRScanPageRoutingModule,
-    // QRCodeModule
+    QRCodeModule
   ],
   declarations: [QRScanPage]
 })
