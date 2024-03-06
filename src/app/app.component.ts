@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,12 +20,33 @@ export class AppComponent {
   public username = "default";
   public email = "default";
   public center = "default";
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     const data = localStorage.getItem('userData');
     if (data !== null) {
       const userData = JSON.parse(data);
       this.username = userData.username;
       this.email = userData.email;
+    }
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Store the current URL in localStorage
+        localStorage.setItem('previousUrl', event.urlAfterRedirects);
+      }
+    });
+
+    // Handle page refresh
+    window.addEventListener('beforeunload', () => {
+      // Store the current URL in localStorage
+      localStorage.setItem('previousUrl', this.router.url);
+    });
+
+    // Navigate to the previous URL if available
+    const previousUrl = localStorage.getItem('previousUrl');
+    if (previousUrl && previousUrl !== '/login') {
+      this.router.navigateByUrl(previousUrl);
     }
   }
 
