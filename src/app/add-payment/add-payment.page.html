@@ -13,9 +13,9 @@
     <div class="group-3092-tXR">
       <div class="group-3032-qBm">
         <p class="text-here--BmR">Amount</p>
-        <ion-input class="rectangle-1-WYo" type="number" placeholder="  Enter amount"></ion-input>
+        <ion-input class="rectangle-1-WYo" type="number" placeholder="  Enter amount" [(ngModel)]="amount"></ion-input>
       </div>
-      <ion-button color="#A56946" class="auto-group-t9ax-dtK" routerLink=" "><ion-label>Submit</ion-label></ion-button>
+      <ion-button color="#A56946" class="auto-group-t9ax-dtK" (click)="submitPayment()"><ion-label>Submit</ion-label></ion-button>
     </div>
   </div>
 </ion-content>

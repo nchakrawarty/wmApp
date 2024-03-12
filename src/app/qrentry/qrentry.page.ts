@@ -18,9 +18,16 @@ export class QREntryPage implements OnInit {
   constructor(private navCtrl: NavController, private route: ActivatedRoute) {}
   
   navigateBack() {
-    this.navCtrl.back();
+    this.navCtrl.navigateRoot('/home'); 
+  }
+
+  navigateToEnterWaste() {
+    this.navCtrl.navigateForward('/enter-waste');
   }
   
+  navigateToEnterPayment() {
+    this.navCtrl.navigateForward('/add-payment');
+  }
 
   ngOnInit() {
     const queryParams = this.route.snapshot.queryParams;

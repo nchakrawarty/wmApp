@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class QRScanPage implements OnDestroy{
   flashEnabled = false;
 
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private navCtrl: NavController,private router: Router, private route: ActivatedRoute) {}
   
   ngOnInit() {
     const queryParams = this.route.snapshot.queryParams;
@@ -110,6 +111,9 @@ export class QRScanPage implements OnDestroy{
   }
   navigateBack() {
     this.router.navigate(['/home']);
+  }
+  goToQrentry() {
+    this.navCtrl.navigateForward('/qrentry'); // Replace '/qrentry' with your actual qrentry page route
   }
   
 

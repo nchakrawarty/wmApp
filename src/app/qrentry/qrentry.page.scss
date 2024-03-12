@@ -1,11 +1,9 @@
-
 /* Target the ion-header element directly */
 ion-header {
   /* Maintain desired dimensions */
   width: 100%;
   height: 48px;
   background: #A56946;
-  ;
 
   ion-icon {
     width: 24px;
@@ -16,6 +14,7 @@ ion-header {
     display: flex;
   }
 }
+
 ion-content {
   --background: #fff;
   margin-top: -80px;
@@ -26,144 +25,100 @@ ion-content {
     width: 100%;
     align-items: center;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    flex-shrink: 0;
     background-color: #ffffff;
-  }
 
-  .qr-rrK .group3093 .t1-name {
-    margin-bottom: 0.6rem;
-    display: flex;
-    width: 131px;
-    height: 20px;
-    top: 148px;
-    left: 115px;
-    font-family: Poppins;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 20px;
-    letter-spacing: 0.30000001192092896px;
-    text-align: left;
-    color: rgba(175, 175, 175, 1);
-    white-space: nowrap;
-    flex-shrink: 0;
+    .t1-name {
+      margin-bottom: 0.6rem;
+      display: flex;
+      font-family: Poppins;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.3px;
+      text-align: left;
+      color: rgba(175, 175, 175, 1);
+      white-space: nowrap;
+    }
 
-  }
-  
-  .qr-rrK .group3093 .t1-contact {
-    width: 143px;
-    height: 20px;
-    top: 160px;
-    left: 109px;
-    font-family: Poppins;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 20px;
-    letter-spacing: 0.30000001192092896px;
-    text-align: left;
-    color: rgba(175, 175, 175, 1);
-  }
+    .t1-contact {
+      font-family: Poppins;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.3px;
+      text-align: left;
+      color: rgba(175, 175, 175, 1);
+    }
 
-  .qr-rrK .group3093 {
-    margin: 0rem 8rem 13.2rem 8.1rem;
-    width: 143px;
-    height: 46px;
-    top: 148px;
-    left: 109px;
-    //width: calc(100% - 16.1rem);
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-  }
+    .group3093 {
+      margin: 0 8rem 13.2rem 8.1rem;
+      width: 143px;
+      height: 46px;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .qr-rrK .group3091 {
-    margin-bottom: 2rem;
-    width: 100%;
-    height: 5.4rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1.6666666667;
-    letter-spacing: 0.03rem;
-    color: #ffffff;
-    font-family: Poppins, 'Source Sans Pro';
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.1px;
-    flex-shrink: 0;
-  }
-  
-  .qr-rrK .group3091,.group3089 {
-    width: 304px;
-    height: 54px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: none;
-    display: "flex";
-  }
-  
-  .qr-rrK .rectangle35,
-  .rectangle34 {
-    background-color: rgba(165, 105, 70, 1);
-    color: #fff;
-    width: 304px;
-    height: 54px;
-    border-radius: 10px;
+    .group3091,
+    .group3089 {
+      //margin-bottom: 2rem;
+      width: 304px;
+      height: 54px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.6666666667;
+      letter-spacing: 0.03rem;
+      color: #ffffff;
+      font-family: Poppins, 'Source Sans Pro';
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
 
-    border-radius: 10px;
-    padding: 0;
-  }
-  
-  .qr-rrK .line4 {
-    margin-bottom: 0.1px;
-    margin-top: 0.1px;
-    //width: 100%;
-    width: 304px;
-    //top: 200px;
-    //left: 28px;
-    //border: 1px;
-    //background: #000000;
+    .rectangle35,
+    .rectangle34 {
+      background-color: rgba(165, 105, 70, 1);
+      color: #fff;
+      width: 304px;
+      height: 54px;
+      border-radius: 10px;
+      padding: 0;
+      //margin-top: 10px;
+      //margin-bottom: 10px;
+    }
 
-    border: 1px solid #000000;
-    background-color: #000000;
-    align-items: center;
-    //align-content: center;
-    flex-shrink: 0;
-  }
+    .line4 {
+      margin-bottom: 20px;
+      margin-top: 20px; 
+      width: 304px; /* Adjust width as needed */
+      height: 1px; /* Match button height */
+      border: 1px solid #000000;
+      background-color: #000000;
+      align-items: center;
+      /* Position the line between buttons */
+      top: 200px;
+      left: 28px;
+      border: 1px;
+      //position: absolute;
+      //top: 50%;
+      transform: translateY(-0%);
+      left: calc(50% - 0.5px); /* Offset half the line width */
+    }
 
-  .qr-rrK .group3089 {
-    width: 100%;
-    height: 5.4rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1.6666666667;
-    letter-spacing: 0.03rem;
-    color: #ffffff;
-    font-family: Poppins, 'Source Sans Pro';
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1rem;
-    display: "flex";
-    flex-shrink: 0;
+    /*.line4 {
+      margin-bottom: 0.1px;
+      margin-top: 10px;
+      width: 304px;
+      border: 1px solid #000000;
+      background-color: #000000;
+      align-items: center;
+    }*/
   }
-
-  
 }
 
-/* Style the ion-toolbar for clean visual appearance */
 ion-toolbar {
-  /* Remove default padding based on preference */
   padding: 0;
-
-  /* Adjust background color if needed */
-  /* background-color: your-desired-color; */
 }
-
-

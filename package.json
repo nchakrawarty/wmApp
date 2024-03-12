@@ -39,6 +39,7 @@
     "@ionic/pwa-elements": "^3.2.2",
     "angularx-qrcode": "^17.0.0",
     "cocoapods": "^0.0.0",
+    "cordova-plugin": "^1.0.0",
     "cordova-plugin-qrscanner": "^3.0.1",
     "ionicons": "^7.0.0",
     "ngx-qrcode": "^0.1.0-rc.1",
