@@ -1,26 +1,54 @@
 <ion-header>
   <ion-toolbar color="orange">
+<<<<<<< HEAD
     <ion-buttons slot="start">
       <ion-back-button defaultHref="enter-waste"></ion-back-button>
     </ion-buttons>
     <ion-title>Add Images</ion-title>
+=======
+      <ion-title></ion-title>
+      
+      
+      <ion-buttons slot="start"> 
+          <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons> 
+>>>>>>> cc909db70aa40a41a0d02c19689193f09f7c105d
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-text-left">
+  <p>Add Images</p>
+  
   <ion-grid>
     <ion-row justify-content-center>
-      <ion-col size="4" *ngFor="let picture of pictures">
-        <img [src]="picture" style="max-width: 100%; height: auto;">
+      <ion-col size="4">
+        <ion-button color="medium" expand="block" (click)="takePhoto()">+</ion-button>
+        <div *ngIf="this.pictures && this.pictures.length > 0">
+          <img *ngFor="let picture of pictures" [src]="picture">
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button color="medium" expand="block" (click)="takePhoto()">+</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button color="medium" expand="block" (click)="takePhoto()">+</ion-button>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row content-center>
+      <ion-col size="4">
+        <ion-button color="medium"  expand="block" (click)="takePhoto()">+</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button color="medium" expand="block" (click)="takePhoto()">+</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button color="medium" expand="block" (click)="takePhoto()">+</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
-
 <ion-footer>
-  <ion-toolbar color="orange">
-    <ion-button color="orange" expand="block" (click)="takePhoto()">Take Photo</ion-button>
-    <ion-button color="orange" expand="block" (click)="saveImages()">Save</ion-button>
-    <ion-button color="orange" expand="block" (click)="uploadImages()">Upload</ion-button>
-  </ion-toolbar>
+  <ion-button color="orange" expand="block" (click)="saveImages()">Save</ion-button>
+  <ion-button color="orange" expand="block" (click)="uploadImages()">Upload</ion-button>
 </ion-footer>
+</ion-content>

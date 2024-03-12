@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { FilesystemDirectory } from '@capacitor/filesystem';
 
 
+
 const { Camera, Filesystem } = Plugins;
 
 @Component({
